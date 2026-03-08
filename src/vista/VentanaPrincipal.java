@@ -33,10 +33,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         contenedor = new javax.swing.JPanel();
         panelInicio = new javax.swing.JPanel();
         panelTemas = new javax.swing.JPanel();
-        panelPregunta = new javax.swing.JPanel();
+        panelPreguntaMultiple = new javax.swing.JPanel();
+        lblPreguntaMultiple = new javax.swing.JLabel();
+        rb3 = new javax.swing.JRadioButton();
+        rb2 = new javax.swing.JRadioButton();
+        rb4 = new javax.swing.JRadioButton();
+        rb1 = new javax.swing.JRadioButton();
+        btnRespuestaMultiple = new javax.swing.JButton();
+        panelPreguntaTexto = new javax.swing.JPanel();
+        lblImagenTexto = new javax.swing.JLabel();
+        txtRespuesta = new javax.swing.JTextField();
+        btnRespuestaTexto = new javax.swing.JButton();
+        lblPreguntaTexto = new javax.swing.JLabel();
         panelRanking = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,18 +81,118 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         contenedor.add(panelTemas, "temas");
 
-        javax.swing.GroupLayout panelPreguntaLayout = new javax.swing.GroupLayout(panelPregunta);
-        panelPregunta.setLayout(panelPreguntaLayout);
-        panelPreguntaLayout.setHorizontalGroup(
-            panelPreguntaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+        panelPreguntaMultiple.setBackground(new java.awt.Color(153, 255, 153));
+
+        lblPreguntaMultiple.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPreguntaMultiple.setText("Pregunta Multiple");
+
+        buttonGroup1.add(rb3);
+        rb3.setText("jRadioButton1");
+
+        buttonGroup1.add(rb2);
+        rb2.setText("jRadioButton1");
+
+        buttonGroup1.add(rb4);
+        rb4.setText("jRadioButton1");
+
+        buttonGroup1.add(rb1);
+        rb1.setText("jRadioButton1");
+
+        btnRespuestaMultiple.setText("jButton1");
+
+        javax.swing.GroupLayout panelPreguntaMultipleLayout = new javax.swing.GroupLayout(panelPreguntaMultiple);
+        panelPreguntaMultiple.setLayout(panelPreguntaMultipleLayout);
+        panelPreguntaMultipleLayout.setHorizontalGroup(
+            panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                            .addGap(15, 15, 15)
+                            .addComponent(lblPreguntaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                            .addGap(107, 107, 107)
+                            .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                                    .addComponent(rb1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rb2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(162, 162, 162))
+                                .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                                    .addComponent(rb3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(216, 216, 216)
+                                    .addComponent(rb4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(btnRespuestaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
-        panelPreguntaLayout.setVerticalGroup(
-            panelPreguntaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+        panelPreguntaMultipleLayout.setVerticalGroup(
+            panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblPreguntaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rb2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rb4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRespuestaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
 
-        contenedor.add(panelPregunta, "pregunta");
+        contenedor.add(panelPreguntaMultiple, "pregunta");
+
+        panelPreguntaTexto.setBackground(new java.awt.Color(153, 255, 255));
+
+        lblImagenTexto.setText("imagenpreguntatexto");
+
+        txtRespuesta.setText("Respuesta");
+
+        btnRespuestaTexto.setText("jButton1");
+
+        lblPreguntaTexto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPreguntaTexto.setText("Pregunta Texto");
+
+        javax.swing.GroupLayout panelPreguntaTextoLayout = new javax.swing.GroupLayout(panelPreguntaTexto);
+        panelPreguntaTexto.setLayout(panelPreguntaTextoLayout);
+        panelPreguntaTextoLayout.setHorizontalGroup(
+            panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaTextoLayout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(lblPreguntaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+            .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
+                .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
+                            .addGap(271, 271, 271)
+                            .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelPreguntaTextoLayout.setVerticalGroup(
+            panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblPreguntaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+
+        contenedor.add(panelPreguntaTexto, "card6");
 
         javax.swing.GroupLayout panelRankingLayout = new javax.swing.GroupLayout(panelRanking);
         panelRanking.setLayout(panelRankingLayout);
@@ -140,10 +252,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRespuestaMultiple;
+    private javax.swing.JButton btnRespuestaTexto;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JLabel lblImagenTexto;
+    private javax.swing.JLabel lblPreguntaMultiple;
+    private javax.swing.JLabel lblPreguntaTexto;
     private javax.swing.JPanel panelInicio;
-    private javax.swing.JPanel panelPregunta;
+    private javax.swing.JPanel panelPreguntaMultiple;
+    private javax.swing.JPanel panelPreguntaTexto;
     private javax.swing.JPanel panelRanking;
     private javax.swing.JPanel panelTemas;
+    private javax.swing.JRadioButton rb1;
+    private javax.swing.JRadioButton rb2;
+    private javax.swing.JRadioButton rb3;
+    private javax.swing.JRadioButton rb4;
+    private javax.swing.JTextField txtRespuesta;
     // End of variables declaration//GEN-END:variables
 }
