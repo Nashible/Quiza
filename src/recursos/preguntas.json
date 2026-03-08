@@ -8,13 +8,13 @@
       "src/recursos/imagenes/italia.png",
       "src/recursos/imagenes/alemania.png"
     ],
-    "respuestaCorrecta": "recursos/imagenes/españa.png",
+    "respuestaCorrecta": "src/recursos/imagenes/españa.png",
     "imagen": ""
   },
   {
     "tipo": "TEXTO",
     "enunciado": "Escribe el nombre de este país:",
     "respuestaCorrecta": "Japón",
-    "imagen": "recursos/imagenes/japon.png"
+    "imagen": "src/recursos/imagenes/japon.png"
   }
 ]

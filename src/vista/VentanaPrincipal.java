@@ -21,6 +21,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
     private List<Pregunta> preguntas;
     private int indicePreguntaActual = 0;
+    private int puntuacion = 0;
 
     public VentanaPrincipal(List<Pregunta> preguntas) {
         initComponents();
@@ -30,7 +31,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        
         rb1.addActionListener(e -> actualizarSeleccion());
         rb2.addActionListener(e -> actualizarSeleccion());
         rb3.addActionListener(e -> actualizarSeleccion());
@@ -130,7 +130,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnRespuestaMultiple.setText("jButton1");
+        btnRespuestaMultiple.setText("Responder");
         btnRespuestaMultiple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRespuestaMultipleActionPerformed(evt);
@@ -186,11 +186,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         panelPreguntaTexto.setBackground(new java.awt.Color(153, 255, 255));
 
-        lblImagenTexto.setText("imagenpreguntatexto");
-
-        txtRespuesta.setText("Respuesta");
-
-        btnRespuestaTexto.setText("jButton1");
+        btnRespuestaTexto.setText("Responder");
+        btnRespuestaTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRespuestaTextoActionPerformed(evt);
+            }
+        });
 
         lblPreguntaTexto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblPreguntaTexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -222,10 +223,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(lblPreguntaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
@@ -260,20 +261,68 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRespuestaMultipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespuestaMultipleActionPerformed
+        Pregunta p = preguntas.get(indicePreguntaActual);
+
+        String seleccion = null;
+
         if (rb1.isSelected()) {
-            System.out.println("Seleccionó opción 1");
-        } else if (rb2.isSelected()) {
-            System.out.println("Seleccionó opción 2");
-        } else if (rb3.isSelected()) {
-            System.out.println("Seleccionó opción 3");
-        } else if (rb4.isSelected()) {
-            System.out.println("Seleccionó opción 4");
+            seleccion = p.getOpciones()[0];
+        }
+        if (rb2.isSelected()) {
+            seleccion = p.getOpciones()[1];
+        }
+        if (rb3.isSelected()) {
+            seleccion = p.getOpciones()[2];
+        }
+        if (rb4.isSelected()) {
+            seleccion = p.getOpciones()[3];
+        }
+
+        if (seleccion == null) {
+            System.out.println("No seleccionó ninguna opción");
+            return;
+        }
+
+        if (seleccion.equals(p.getRespuestaCorrecta())) {
+            puntuacion++;
+            System.out.println("Correcto!");
+        } else {
+            System.out.println("Incorrecto");
+        }
+
+        indicePreguntaActual++;
+
+        if (indicePreguntaActual < preguntas.size()) {
+            mostrarPregunta();
+        } else {
+            System.out.println("Juego terminado. Puntuación: " + puntuacion);
         }
     }//GEN-LAST:event_btnRespuestaMultipleActionPerformed
 
     private void rb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_rb1MouseClicked
+
+    private void btnRespuestaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespuestaTextoActionPerformed
+        Pregunta p = preguntas.get(indicePreguntaActual);
+
+        String respuestaJugador = txtRespuesta.getText();
+
+        if (respuestaJugador.equalsIgnoreCase(p.getRespuestaCorrecta())) {
+            puntuacion++;
+            System.out.println("Correcto!");
+        } else {
+            System.out.println("Incorrecto");
+        }
+
+        indicePreguntaActual++;
+
+        if (indicePreguntaActual < preguntas.size()) {
+            mostrarPregunta();
+        } else {
+            System.out.println("Juego terminado. Puntuación: " + puntuacion);
+        }
+    }//GEN-LAST:event_btnRespuestaTextoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,10 +386,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             lblPreguntaTexto.setText(p.getEnunciado());
 
-            if (p.getImagen() != null && !p.getImagen().isEmpty()) {
-                lblImagenTexto.setIcon(new ImageIcon(p.getImagen()));
-            }
+            configurarImagenLabel(lblImagenTexto, p.getImagen(), 200, 240);
         }
+        revalidate();
+        repaint();
     }
 
     private void configurarRadio(JRadioButton rb, String ruta) {
@@ -381,6 +430,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             rb4.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLUE, 4));
         }
 
+    }
+
+    private void configurarImagenLabel(javax.swing.JLabel label, String ruta, int ancho, int alto) {
+        if (ruta == null || ruta.isEmpty()) {
+            label.setIcon(null);
+            return;
+        }
+
+        ImageIcon icon = new ImageIcon(ruta);
+        Image img = icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        label.setIcon(new ImageIcon(img));
     }
 
 
