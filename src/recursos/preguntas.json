@@ -1,0 +1,20 @@
+[
+  {
+    "tipo": "MULTIPLE",
+    "enunciado": "¿Cuál de estas banderas es de España?",
+    "opciones": [
+      "src/recursos/imagenes/francia.png",
+      "src/recursos/imagenes/españa.png",
+      "src/recursos/imagenes/italia.png",
+      "src/recursos/imagenes/alemania.png"
+    ],
+    "respuestaCorrecta": "recursos/imagenes/españa.png",
+    "imagen": ""
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "Escribe el nombre de este país:",
+    "respuestaCorrecta": "Japón",
+    "imagen": "recursos/imagenes/japon.png"
+  }
+]

@@ -32,15 +32,16 @@ public class LectorJSON {
 
                 if (tipo.equals("MULTIPLE")) {
                     JSONArray opcionesJSON = (JSONArray) jsonPregunta.get("opciones");
-                    List<String> opciones = new ArrayList<>();
-                    for (Object o : opcionesJSON) {
-                        opciones.add((String) o);
+                    String[] opciones = new String[opcionesJSON.size()];
+                    for (int i = 0; i < opcionesJSON.size(); i++) {
+                        opciones[i] = (String) opcionesJSON.get(i);
                     }
-                    int correcta = ((Long) jsonPregunta.get("correcta")).intValue();
-                    preguntas.add(new Pregunta(enunciado, opciones, correcta, imagen));
+                    String respuestaCorrecta = (String) jsonPregunta.get("respuestaCorrecta");
+                    preguntas.add(new Pregunta(enunciado, opciones, respuestaCorrecta, imagen));
+
                 } else if (tipo.equals("TEXTO")) {
-                    String respuesta = (String) jsonPregunta.get("respuesta");
-                    preguntas.add(new Pregunta(enunciado, respuesta, imagen));
+                    String respuestaCorrecta = (String) jsonPregunta.get("respuestaCorrecta");
+                    preguntas.add(new Pregunta(enunciado, respuestaCorrecta, imagen));
                 }
             }
 

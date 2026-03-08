@@ -5,23 +5,53 @@
 package vista;
 
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
+import modelo.Pregunta;
 
 /**
  *
  * @author Antonio
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
+    private List<Pregunta> preguntas;
+    private int indicePreguntaActual = 0;
+
+    public VentanaPrincipal(List<Pregunta> preguntas) {
+        initComponents();
+        this.preguntas = preguntas;
+
+        setSize(800, 600);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        
+        rb1.addActionListener(e -> actualizarSeleccion());
+        rb2.addActionListener(e -> actualizarSeleccion());
+        rb3.addActionListener(e -> actualizarSeleccion());
+        rb4.addActionListener(e -> actualizarSeleccion());
+
+        if (preguntas != null && !preguntas.isEmpty()) {
+            mostrarPregunta();
+        } else {
+            logger.warning("La lista de preguntas está vacía o es null.");
+        }
+    }
 
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
-        setSize(800,600);
+        setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
     }
 
     /**
@@ -84,21 +114,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPreguntaMultiple.setBackground(new java.awt.Color(153, 255, 153));
 
         lblPreguntaMultiple.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPreguntaMultiple.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPreguntaMultiple.setText("Pregunta Multiple");
 
         buttonGroup1.add(rb3);
-        rb3.setText("jRadioButton1");
 
         buttonGroup1.add(rb2);
-        rb2.setText("jRadioButton1");
 
         buttonGroup1.add(rb4);
-        rb4.setText("jRadioButton1");
 
         buttonGroup1.add(rb1);
-        rb1.setText("jRadioButton1");
+        rb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rb1MouseClicked(evt);
+            }
+        });
 
         btnRespuestaMultiple.setText("jButton1");
+        btnRespuestaMultiple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRespuestaMultipleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPreguntaMultipleLayout = new javax.swing.GroupLayout(panelPreguntaMultiple);
         panelPreguntaMultiple.setLayout(panelPreguntaMultipleLayout);
@@ -111,17 +148,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGap(15, 15, 15)
                             .addComponent(lblPreguntaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
-                            .addGap(107, 107, 107)
+                            .addGap(150, 150, 150)
                             .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaMultipleLayout.createSequentialGroup()
                                     .addComponent(rb1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(rb2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(162, 162, 162))
+                                    .addComponent(rb2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
                                     .addComponent(rb3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(216, 216, 216)
-                                    .addComponent(rb4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rb4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(150, 150, 150)))
                     .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
                         .addGap(319, 319, 319)
                         .addComponent(btnRespuestaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -156,6 +193,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnRespuestaTexto.setText("jButton1");
 
         lblPreguntaTexto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPreguntaTexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPreguntaTexto.setText("Pregunta Texto");
 
         javax.swing.GroupLayout panelPreguntaTextoLayout = new javax.swing.GroupLayout(panelPreguntaTexto);
@@ -163,19 +201,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPreguntaTextoLayout.setHorizontalGroup(
             panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaTextoLayout.createSequentialGroup()
-                .addGap(0, 15, Short.MAX_VALUE)
+                .addGap(0, 20, Short.MAX_VALUE)
                 .addComponent(lblPreguntaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
             .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
-                .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
                             .addGap(271, 271, 271)
-                            .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
+                            .addGap(319, 319, 319)
+                            .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelPreguntaTextoLayout.setVerticalGroup(
@@ -192,7 +230,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(40, 40, 40))
         );
 
-        contenedor.add(panelPreguntaTexto, "card6");
+        contenedor.add(panelPreguntaTexto, "texto");
 
         javax.swing.GroupLayout panelRankingLayout = new javax.swing.GroupLayout(panelRanking);
         panelRanking.setLayout(panelRankingLayout);
@@ -221,6 +259,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRespuestaMultipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespuestaMultipleActionPerformed
+        if (rb1.isSelected()) {
+            System.out.println("Seleccionó opción 1");
+        } else if (rb2.isSelected()) {
+            System.out.println("Seleccionó opción 2");
+        } else if (rb3.isSelected()) {
+            System.out.println("Seleccionó opción 3");
+        } else if (rb4.isSelected()) {
+            System.out.println("Seleccionó opción 4");
+        }
+    }//GEN-LAST:event_btnRespuestaMultipleActionPerformed
+
+    private void rb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rb1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -245,11 +299,90 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new VentanaPrincipal().setVisible(true));
     }
+
     public void cambiarPantalla(String nombre) {
-    CardLayout card = (CardLayout) contenedor.getLayout();
-    card.show(contenedor, nombre);
-}
-    
+        CardLayout card = (CardLayout) contenedor.getLayout();
+        card.show(contenedor, nombre);
+    }
+
+    public void mostrarPregunta() {
+
+        buttonGroup1.clearSelection();
+        rb1.setBorder(null);
+        rb2.setBorder(null);
+        rb3.setBorder(null);
+        rb4.setBorder(null);
+
+        if (indicePreguntaActual >= preguntas.size()) {
+            System.out.println("Se acabaron las preguntas");
+            return;
+        }
+
+        Pregunta p = preguntas.get(indicePreguntaActual);
+
+        if (p.getTipo() == Pregunta.Tipo.MULTIPLE) {
+
+            cambiarPantalla("pregunta");
+
+            lblPreguntaMultiple.setText(p.getEnunciado());
+
+            configurarRadio(rb1, p.getOpciones()[0]);
+            configurarRadio(rb2, p.getOpciones()[1]);
+            configurarRadio(rb3, p.getOpciones()[2]);
+            configurarRadio(rb4, p.getOpciones()[3]);
+
+        } else if (p.getTipo() == Pregunta.Tipo.TEXTO) {
+
+            cambiarPantalla("texto");
+
+            lblPreguntaTexto.setText(p.getEnunciado());
+
+            if (p.getImagen() != null && !p.getImagen().isEmpty()) {
+                lblImagenTexto.setIcon(new ImageIcon(p.getImagen()));
+            }
+        }
+    }
+
+    private void configurarRadio(JRadioButton rb, String ruta) {
+
+        ImageIcon icon = new ImageIcon(ruta);
+
+        Image img = icon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+
+        rb.setIcon(new ImageIcon(img));
+
+        rb.setBorderPainted(true);
+        rb.setFocusPainted(false);
+        rb.setContentAreaFilled(false);
+        rb.setHorizontalAlignment(SwingConstants.CENTER);
+
+    }
+
+    private void actualizarSeleccion() {
+
+        rb1.setBorder(null);
+        rb2.setBorder(null);
+        rb3.setBorder(null);
+        rb4.setBorder(null);
+
+        if (rb1.isSelected()) {
+            rb1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLUE, 4));
+        }
+
+        if (rb2.isSelected()) {
+            rb2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLUE, 4));
+        }
+
+        if (rb3.isSelected()) {
+            rb3.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLUE, 4));
+        }
+
+        if (rb4.isSelected()) {
+            rb4.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLUE, 4));
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRespuestaMultiple;

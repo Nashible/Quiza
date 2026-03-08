@@ -103,21 +103,21 @@
                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                   <Component id="lblPreguntaMultiple" min="-2" pref="770" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Component id="rb1" min="-2" pref="150" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="rb2" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="rb3" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Component id="rb4" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -157,6 +157,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Pregunta Multiple"/>
               </Properties>
             </Component>
@@ -165,7 +166,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jRadioButton1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rb2">
@@ -173,7 +173,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jRadioButton1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rb4">
@@ -181,7 +180,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jRadioButton1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rb1">
@@ -189,13 +187,18 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jRadioButton1"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rb1MouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnRespuestaMultiple">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jButton1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRespuestaMultipleActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -207,7 +210,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card6"/>
+              <CardConstraints cardName="texto"/>
             </Constraint>
           </Constraints>
 
@@ -215,22 +218,22 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                       <Component id="lblPreguntaTexto" min="-2" pref="765" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="lblImagenTexto" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblImagenTexto" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
                                   <Component id="txtRespuesta" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
-                              <Component id="btnRespuestaTexto" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
+                                  <Component id="btnRespuestaTexto" min="-2" pref="99" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -274,6 +277,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Pregunta Texto"/>
               </Properties>
             </Component>

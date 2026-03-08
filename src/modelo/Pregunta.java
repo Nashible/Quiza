@@ -1,36 +1,35 @@
 package modelo;
 
-import java.util.List;
-import java.io.Serializable;
-
-public class Pregunta implements Serializable {
+public class Pregunta {
 
     public enum Tipo {
         MULTIPLE, TEXTO
     }
 
-    private String enunciado;
-    private List<String> opciones;
-    private int respuestaCorrecta;
-    private String respuestaTexto;
-    private String imagen;
     private Tipo tipo;
+    private String enunciado;
+    private String[] opciones; 
+    private String respuestaCorrecta;
+    private String imagen;
 
-    public Pregunta(String enunciado, List<String> opciones, int respuestaCorrecta, String imagen) {
+    
+    public Pregunta(String enunciado, String[] opciones, String respuestaCorrecta, String imagen) {
+        this.tipo = Tipo.MULTIPLE;
         this.enunciado = enunciado;
         this.opciones = opciones;
         this.respuestaCorrecta = respuestaCorrecta;
         this.imagen = imagen;
-        this.tipo = Tipo.MULTIPLE;
     }
 
-    public Pregunta(String enunciado, String respuestaTexto, String imagen) {
-        this.enunciado = enunciado;
-        this.respuestaTexto = respuestaTexto;
-        this.imagen = imagen;
+    
+    public Pregunta(String enunciado, String respuestaCorrecta, String imagen) {
         this.tipo = Tipo.TEXTO;
+        this.enunciado = enunciado;
+        this.respuestaCorrecta = respuestaCorrecta;
+        this.imagen = imagen;
     }
 
+    
     public Tipo getTipo() {
         return tipo;
     }
@@ -39,16 +38,12 @@ public class Pregunta implements Serializable {
         return enunciado;
     }
 
-    public List<String> getOpciones() {
+    public String[] getOpciones() {
         return opciones;
     }
 
-    public int getRespuestaCorrecta() {
+    public String getRespuestaCorrecta() {
         return respuestaCorrecta;
-    }
-
-    public String getRespuestaTexto() {
-        return respuestaTexto;
     }
 
     public String getImagen() {
