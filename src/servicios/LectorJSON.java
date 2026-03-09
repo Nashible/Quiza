@@ -29,6 +29,7 @@ public class LectorJSON {
                 String tipo = (String) jsonPregunta.get("tipo");
                 String enunciado = (String) jsonPregunta.get("enunciado");
                 String imagen = (String) jsonPregunta.get("imagen");
+                String tema = (String) jsonPregunta.get("tema");
 
                 if (tipo.equals("MULTIPLE")) {
                     JSONArray opcionesJSON = (JSONArray) jsonPregunta.get("opciones");
@@ -37,11 +38,11 @@ public class LectorJSON {
                         opciones[i] = (String) opcionesJSON.get(i);
                     }
                     String respuestaCorrecta = (String) jsonPregunta.get("respuestaCorrecta");
-                    preguntas.add(new Pregunta(enunciado, opciones, respuestaCorrecta, imagen));
+                    preguntas.add(new Pregunta(enunciado, opciones, respuestaCorrecta, imagen, tema));
 
                 } else if (tipo.equals("TEXTO")) {
                     String respuestaCorrecta = (String) jsonPregunta.get("respuestaCorrecta");
-                    preguntas.add(new Pregunta(enunciado, respuestaCorrecta, imagen));
+                    preguntas.add(new Pregunta(enunciado, respuestaCorrecta, imagen, tema));
                 }
             }
 

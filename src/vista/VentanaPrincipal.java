@@ -6,6 +6,7 @@ package vista;
 
 import java.awt.CardLayout;
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
@@ -40,7 +41,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         rb4.addActionListener(e -> actualizarSeleccion());
 
         if (preguntas != null && !preguntas.isEmpty()) {
-            mostrarPregunta();
+            cambiarPantalla("temas");
         } else {
             logger.warning("La lista de preguntas está vacía o es null.");
         }
@@ -78,6 +79,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblCiencia = new javax.swing.JLabel();
         lblLiteratura = new javax.swing.JLabel();
         lblHistoria = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         panelPreguntaMultiple = new javax.swing.JPanel();
         lblPreguntaMultiple = new javax.swing.JLabel();
         rb3 = new javax.swing.JRadioButton();
@@ -194,6 +196,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Elige un tema");
+
         javax.swing.GroupLayout panelTemasLayout = new javax.swing.GroupLayout(panelTemas);
         panelTemas.setLayout(panelTemasLayout);
         panelTemasLayout.setHorizontalGroup(
@@ -224,13 +230,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(110, 110, 110)
                         .addComponent(btnGeografia, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(170, 170, 170)
-                        .addComponent(btnLiteratura, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                        .addComponent(btnLiteratura, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelTemasLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         panelTemasLayout.setVerticalGroup(
             panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTemasLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnGeografia, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                     .addComponent(btnLiteratura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -242,7 +253,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCiencia, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                     .addComponent(btnHistoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCiencia)
                     .addComponent(lblHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -474,7 +485,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRespuestaTextoActionPerformed
 
     private void btnCienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCienciaActionPerformed
-       System.out.println("Pulsado Ciencia");
+        iniciarJuegoPorTema("Ciencia");
     }//GEN-LAST:event_btnCienciaActionPerformed
 
     private void lblGeografiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGeografiaMouseClicked
@@ -494,15 +505,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHistoriaMouseClicked
 
     private void btnGeografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeografiaActionPerformed
-        System.out.println("Pulsado Geografia");
+        iniciarJuegoPorTema("Geografia");
     }//GEN-LAST:event_btnGeografiaActionPerformed
 
     private void btnLiteraturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiteraturaActionPerformed
-       System.out.println("Pulsado Literatura");
+        iniciarJuegoPorTema("Literatura");
     }//GEN-LAST:event_btnLiteraturaActionPerformed
 
     private void btnHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriaActionPerformed
-        System.out.println("Pulsado Historia");
+        iniciarJuegoPorTema("Historia");
     }//GEN-LAST:event_btnHistoriaActionPerformed
 
     /**
@@ -552,7 +563,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         if (p.getTipo() == Pregunta.Tipo.MULTIPLE) {
 
-            cambiarPantalla("temas");
+            cambiarPantalla("pregunta");
 
             lblPreguntaMultiple.setText(p.getEnunciado());
 
@@ -658,6 +669,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         temporizador.start();
     }
 
+    public void iniciarJuegoPorTema(String tema) {
+        List<Pregunta> preguntasFiltradas = new ArrayList<>();
+        for (Pregunta p : preguntas) {
+            if (p.getTema().equalsIgnoreCase(tema)) {
+                preguntasFiltradas.add(p);
+            }
+        }
+
+        if (preguntasFiltradas.isEmpty()) {
+            System.out.println("No hay preguntas para este tema.");
+            return;
+        }
+
+        this.preguntas = preguntasFiltradas;
+        this.indicePreguntaActual = 0;
+
+        mostrarPregunta();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCiencia;
@@ -668,6 +698,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRespuestaTexto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCiencia;
     private javax.swing.JLabel lblGeografia;
     private javax.swing.JLabel lblHistoria;

@@ -9,12 +9,14 @@
       "src/recursos/imagenes/alemania.png"
     ],
     "respuestaCorrecta": "src/recursos/imagenes/españa.png",
-    "imagen": ""
+    "imagen": "",
+    "tema": "Geografia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "Escribe el nombre de este país:",
     "respuestaCorrecta": "Japón",
-    "imagen": "src/recursos/imagenes/japon.png"
+    "imagen": "src/recursos/imagenes/japon.png",
+    "tema": "Geografia"
   }
 ]

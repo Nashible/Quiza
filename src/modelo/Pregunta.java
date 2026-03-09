@@ -11,25 +11,28 @@ public class Pregunta {
     private String[] opciones; 
     private String respuestaCorrecta;
     private String imagen;
+    private String tema;
 
     
-    public Pregunta(String enunciado, String[] opciones, String respuestaCorrecta, String imagen) {
+    public Pregunta(String enunciado, String[] opciones, String respuestaCorrecta, String imagen, String tema) {
         this.tipo = Tipo.MULTIPLE;
         this.enunciado = enunciado;
         this.opciones = opciones;
         this.respuestaCorrecta = respuestaCorrecta;
         this.imagen = imagen;
+        this.tema = tema;
     }
 
     
-    public Pregunta(String enunciado, String respuestaCorrecta, String imagen) {
+    public Pregunta(String enunciado, String respuestaCorrecta, String imagen, String tema) {
         this.tipo = Tipo.TEXTO;
         this.enunciado = enunciado;
         this.respuestaCorrecta = respuestaCorrecta;
         this.imagen = imagen;
+        this.tema = tema;
     }
 
-    
+    // Getters
     public Tipo getTipo() {
         return tipo;
     }
@@ -48,5 +51,9 @@ public class Pregunta {
 
     public String getImagen() {
         return imagen;
+    }
+
+    public String getTema() {
+        return tema;
     }
 }
