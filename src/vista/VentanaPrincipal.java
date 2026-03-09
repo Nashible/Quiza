@@ -70,6 +70,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         contenedor = new javax.swing.JPanel();
         panelInicio = new javax.swing.JPanel();
         panelTemas = new javax.swing.JPanel();
+        btnCiencia = new javax.swing.JButton();
+        btnLiteratura = new javax.swing.JButton();
+        btnHistoria = new javax.swing.JButton();
+        btnGeografia = new javax.swing.JButton();
+        lblGeografia = new javax.swing.JLabel();
+        lblCiencia = new javax.swing.JLabel();
+        lblLiteratura = new javax.swing.JLabel();
+        lblHistoria = new javax.swing.JLabel();
         panelPreguntaMultiple = new javax.swing.JPanel();
         lblPreguntaMultiple = new javax.swing.JLabel();
         rb3 = new javax.swing.JRadioButton();
@@ -103,15 +111,142 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         contenedor.add(panelInicio, "inicio");
 
+        panelTemas.setBackground(new java.awt.Color(255, 255, 204));
+        panelTemas.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        btnCiencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/ciencia96.png"))); // NOI18N
+        btnCiencia.setBorderPainted(false);
+        btnCiencia.setContentAreaFilled(false);
+        btnCiencia.setFocusPainted(false);
+        btnCiencia.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/ciencia128.png"))); // NOI18N
+        btnCiencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCienciaActionPerformed(evt);
+            }
+        });
+
+        btnLiteratura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/literatura96.png"))); // NOI18N
+        btnLiteratura.setBorderPainted(false);
+        btnLiteratura.setContentAreaFilled(false);
+        btnLiteratura.setFocusPainted(false);
+        btnLiteratura.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/literatura128.png"))); // NOI18N
+        btnLiteratura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLiteraturaActionPerformed(evt);
+            }
+        });
+
+        btnHistoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/historia96.png"))); // NOI18N
+        btnHistoria.setBorderPainted(false);
+        btnHistoria.setContentAreaFilled(false);
+        btnHistoria.setFocusPainted(false);
+        btnHistoria.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/historia128.png"))); // NOI18N
+        btnHistoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoriaActionPerformed(evt);
+            }
+        });
+
+        btnGeografia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/geografia96.png"))); // NOI18N
+        btnGeografia.setBorderPainted(false);
+        btnGeografia.setContentAreaFilled(false);
+        btnGeografia.setFocusPainted(false);
+        btnGeografia.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/geografia128.png"))); // NOI18N
+        btnGeografia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGeografiaActionPerformed(evt);
+            }
+        });
+
+        lblGeografia.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblGeografia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGeografia.setText("Geografía");
+        lblGeografia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGeografiaMouseClicked(evt);
+            }
+        });
+
+        lblCiencia.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblCiencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCiencia.setText("Ciencia");
+        lblCiencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCienciaMouseClicked(evt);
+            }
+        });
+
+        lblLiteratura.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblLiteratura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLiteratura.setText("Literatura");
+        lblLiteratura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLiteraturaMouseClicked(evt);
+            }
+        });
+
+        lblHistoria.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblHistoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHistoria.setText("Historia");
+        lblHistoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHistoriaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelTemasLayout = new javax.swing.GroupLayout(panelTemas);
         panelTemas.setLayout(panelTemasLayout);
         panelTemasLayout.setHorizontalGroup(
             panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panelTemasLayout.createSequentialGroup()
+                .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelTemasLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelTemasLayout.createSequentialGroup()
+                                .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelTemasLayout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addComponent(btnCiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblCiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelTemasLayout.createSequentialGroup()
+                                        .addGap(138, 138, 138)
+                                        .addComponent(btnHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTemasLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(panelTemasLayout.createSequentialGroup()
+                                .addComponent(lblGeografia, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(122, 122, 122)
+                                .addComponent(lblLiteratura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelTemasLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(btnGeografia, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(170, 170, 170)
+                        .addComponent(btnLiteratura, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         panelTemasLayout.setVerticalGroup(
             panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(panelTemasLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGeografia, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                    .addComponent(btnLiteratura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGeografia)
+                    .addComponent(lblLiteratura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCiencia, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                    .addComponent(btnHistoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(panelTemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCiencia)
+                    .addComponent(lblHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         contenedor.add(panelTemas, "temas");
@@ -212,11 +347,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPreguntaTextoLayout.setHorizontalGroup(
             panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
+                .addGap(271, 271, 271)
                 .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
-                        .addGap(271, 271, 271)
-                        .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaTextoLayout.createSequentialGroup()
                 .addGap(0, 20, Short.MAX_VALUE)
@@ -339,6 +473,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRespuestaTextoActionPerformed
 
+    private void btnCienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCienciaActionPerformed
+       System.out.println("Pulsado Ciencia");
+    }//GEN-LAST:event_btnCienciaActionPerformed
+
+    private void lblGeografiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGeografiaMouseClicked
+        btnGeografia.doClick();
+    }//GEN-LAST:event_lblGeografiaMouseClicked
+
+    private void lblLiteraturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLiteraturaMouseClicked
+        btnLiteratura.doClick();
+    }//GEN-LAST:event_lblLiteraturaMouseClicked
+
+    private void lblCienciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCienciaMouseClicked
+        btnCiencia.doClick();
+    }//GEN-LAST:event_lblCienciaMouseClicked
+
+    private void lblHistoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHistoriaMouseClicked
+        btnHistoria.doClick();
+    }//GEN-LAST:event_lblHistoriaMouseClicked
+
+    private void btnGeografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeografiaActionPerformed
+        System.out.println("Pulsado Geografia");
+    }//GEN-LAST:event_btnGeografiaActionPerformed
+
+    private void btnLiteraturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiteraturaActionPerformed
+       System.out.println("Pulsado Literatura");
+    }//GEN-LAST:event_btnLiteraturaActionPerformed
+
+    private void btnHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriaActionPerformed
+        System.out.println("Pulsado Historia");
+    }//GEN-LAST:event_btnHistoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,7 +552,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         if (p.getTipo() == Pregunta.Tipo.MULTIPLE) {
 
-            cambiarPantalla("pregunta");
+            cambiarPantalla("temas");
 
             lblPreguntaMultiple.setText(p.getEnunciado());
 
@@ -394,8 +560,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             configurarRadio(rb2, p.getOpciones()[1]);
             configurarRadio(rb3, p.getOpciones()[2]);
             configurarRadio(rb4, p.getOpciones()[3]);
-            
-        
 
         } else if (p.getTipo() == Pregunta.Tipo.TEXTO) {
 
@@ -460,51 +624,55 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Image img = icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         label.setIcon(new ImageIcon(img));
     }
-    
+
     private void iniciarTemporizador() {
-    
-    tiempoRestante = 30;
 
-   
-    if (temporizador != null && temporizador.isRunning()) {
-        temporizador.stop();
-    }
+        tiempoRestante = 30;
 
-    temporizador = new Timer(1000, e -> {
-        tiempoRestante--;
-
-        
-        if (panelPreguntaMultiple.isVisible()) {
-            lblTiempoMultiple.setText("Tiempo: " + tiempoRestante + "s");
-        } else if (panelPreguntaTexto.isVisible()) {
-            lblTiempoTexto.setText("Tiempo: " + tiempoRestante + "s");
-        }
-
-       
-        if (tiempoRestante <= 0) {
+        if (temporizador != null && temporizador.isRunning()) {
             temporizador.stop();
-            System.out.println("¡Tiempo agotado!");
-
-          
-            indicePreguntaActual++;
-            if (indicePreguntaActual < preguntas.size()) {
-                mostrarPregunta();
-            } else {
-                System.out.println("Juego terminado. Puntuación: " + puntuacion);
-            }
         }
-    });
 
-    temporizador.start();
-}
+        temporizador = new Timer(1000, e -> {
+            tiempoRestante--;
+
+            if (panelPreguntaMultiple.isVisible()) {
+                lblTiempoMultiple.setText("Tiempo: " + tiempoRestante + "s");
+            } else if (panelPreguntaTexto.isVisible()) {
+                lblTiempoTexto.setText("Tiempo: " + tiempoRestante + "s");
+            }
+
+            if (tiempoRestante <= 0) {
+                temporizador.stop();
+                System.out.println("¡Tiempo agotado!");
+
+                indicePreguntaActual++;
+                if (indicePreguntaActual < preguntas.size()) {
+                    mostrarPregunta();
+                } else {
+                    System.out.println("Juego terminado. Puntuación: " + puntuacion);
+                }
+            }
+        });
+
+        temporizador.start();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCiencia;
+    private javax.swing.JButton btnGeografia;
+    private javax.swing.JButton btnHistoria;
+    private javax.swing.JButton btnLiteratura;
     private javax.swing.JButton btnRespuestaMultiple;
     private javax.swing.JButton btnRespuestaTexto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JLabel lblCiencia;
+    private javax.swing.JLabel lblGeografia;
+    private javax.swing.JLabel lblHistoria;
     private javax.swing.JLabel lblImagenTexto;
+    private javax.swing.JLabel lblLiteratura;
     private javax.swing.JLabel lblPreguntaMultiple;
     private javax.swing.JLabel lblPreguntaTexto;
     private javax.swing.JLabel lblTiempoMultiple;
