@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import modelo.Pregunta;
 
 /**
@@ -22,6 +23,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private List<Pregunta> preguntas;
     private int indicePreguntaActual = 0;
     private int puntuacion = 0;
+    private Timer temporizador;
+    private int tiempoRestante;
 
     public VentanaPrincipal(List<Pregunta> preguntas) {
         initComponents();
@@ -74,11 +77,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         rb4 = new javax.swing.JRadioButton();
         rb1 = new javax.swing.JRadioButton();
         btnRespuestaMultiple = new javax.swing.JButton();
+        lblTiempoMultiple = new javax.swing.JLabel();
         panelPreguntaTexto = new javax.swing.JPanel();
         lblImagenTexto = new javax.swing.JLabel();
         txtRespuesta = new javax.swing.JTextField();
         btnRespuestaTexto = new javax.swing.JButton();
         lblPreguntaTexto = new javax.swing.JLabel();
+        lblTiempoTexto = new javax.swing.JLabel();
         panelRanking = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,27 +147,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPreguntaMultipleLayout.setHorizontalGroup(
             panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
-                .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
-                            .addGap(15, 15, 15)
-                            .addComponent(lblPreguntaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaMultipleLayout.createSequentialGroup()
-                                    .addComponent(rb1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(rb2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
-                                    .addComponent(rb3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(rb4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(150, 150, 150)))
+                .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(btnRespuestaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15)
+                        .addComponent(lblPreguntaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaMultipleLayout.createSequentialGroup()
+                                .addComponent(rb1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rb2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                                .addComponent(rb3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rb4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(150, 150, 150)))
                 .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(panelPreguntaMultipleLayout.createSequentialGroup()
+                .addGap(319, 319, 319)
+                .addComponent(btnRespuestaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTiempoMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
         );
         panelPreguntaMultipleLayout.setVerticalGroup(
             panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,13 +185,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(rb3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rb4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnRespuestaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelPreguntaMultipleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRespuestaMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTiempoMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
         contenedor.add(panelPreguntaMultiple, "pregunta");
 
         panelPreguntaTexto.setBackground(new java.awt.Color(153, 255, 255));
+        panelPreguntaTexto.setPreferredSize(new java.awt.Dimension(800, 600));
 
         btnRespuestaTexto.setText("Responder");
         btnRespuestaTexto.addActionListener(new java.awt.event.ActionListener() {
@@ -201,21 +211,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPreguntaTexto.setLayout(panelPreguntaTextoLayout);
         panelPreguntaTextoLayout.setHorizontalGroup(
             panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaTextoLayout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
-                .addComponent(lblPreguntaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
             .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
                 .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
-                            .addGap(271, 271, 271)
-                            .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
-                            .addGap(319, 319, 319)
-                            .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelPreguntaTextoLayout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaTextoLayout.createSequentialGroup()
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaTextoLayout.createSequentialGroup()
+                        .addComponent(lblPreguntaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPreguntaTextoLayout.createSequentialGroup()
+                        .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(227, 227, 227)
+                        .addComponent(lblTiempoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75))))
         );
         panelPreguntaTextoLayout.setVerticalGroup(
             panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,8 +239,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(lblImagenTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(panelPreguntaTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRespuestaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTiempoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -379,6 +394,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             configurarRadio(rb2, p.getOpciones()[1]);
             configurarRadio(rb3, p.getOpciones()[2]);
             configurarRadio(rb4, p.getOpciones()[3]);
+            
+        
 
         } else if (p.getTipo() == Pregunta.Tipo.TEXTO) {
 
@@ -388,6 +405,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             configurarImagenLabel(lblImagenTexto, p.getImagen(), 200, 240);
         }
+        iniciarTemporizador();
         revalidate();
         repaint();
     }
@@ -442,6 +460,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Image img = icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         label.setIcon(new ImageIcon(img));
     }
+    
+    private void iniciarTemporizador() {
+    
+    tiempoRestante = 30;
+
+   
+    if (temporizador != null && temporizador.isRunning()) {
+        temporizador.stop();
+    }
+
+    temporizador = new Timer(1000, e -> {
+        tiempoRestante--;
+
+        
+        if (panelPreguntaMultiple.isVisible()) {
+            lblTiempoMultiple.setText("Tiempo: " + tiempoRestante + "s");
+        } else if (panelPreguntaTexto.isVisible()) {
+            lblTiempoTexto.setText("Tiempo: " + tiempoRestante + "s");
+        }
+
+       
+        if (tiempoRestante <= 0) {
+            temporizador.stop();
+            System.out.println("¡Tiempo agotado!");
+
+          
+            indicePreguntaActual++;
+            if (indicePreguntaActual < preguntas.size()) {
+                mostrarPregunta();
+            } else {
+                System.out.println("Juego terminado. Puntuación: " + puntuacion);
+            }
+        }
+    });
+
+    temporizador.start();
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -452,6 +507,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblImagenTexto;
     private javax.swing.JLabel lblPreguntaMultiple;
     private javax.swing.JLabel lblPreguntaTexto;
+    private javax.swing.JLabel lblTiempoMultiple;
+    private javax.swing.JLabel lblTiempoTexto;
     private javax.swing.JPanel panelInicio;
     private javax.swing.JPanel panelPreguntaMultiple;
     private javax.swing.JPanel panelPreguntaTexto;
