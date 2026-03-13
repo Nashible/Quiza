@@ -1,8 +1,11 @@
 package modelo;
 
-public class Jugador {
+import java.io.Serializable;
+
+public class Jugador implements Serializable {
 
     private String nombre;
+    private String tema;
     private int puntuacion;
 
     public Jugador(String nombre) {
@@ -13,6 +16,15 @@ public class Jugador {
     public String getNombre() {
         return nombre;
     }
+
+    public String getTema() {
+        return tema;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+    
 
     public int getPuntuacion() {
         return puntuacion;

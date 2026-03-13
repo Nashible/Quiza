@@ -7,13 +7,20 @@ package vista;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import modelo.Jugador;
 import modelo.Pregunta;
+import servicios.GestorPreguntas;
+
 
 /**
  *
@@ -27,6 +34,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Timer temporizador;
     private int tiempoRestante;
     private Jugador jugadorActual;
+    private String temaActual;
+    private GestorPreguntas gestorPersistencia;
 
     public VentanaPrincipal(List<Pregunta> preguntas) {
         initComponents();
@@ -35,6 +44,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        
+        gestorPersistencia = new GestorPreguntas();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblRanking.getModel();
+        modelo.setRowCount(0);
+
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
+        tblRanking.setRowSorter(sorter);
+        sorter.setSortKeys(Arrays.asList(
+                new RowSorter.SortKey(2, SortOrder.DESCENDING)
+        ));
 
         rb1.addActionListener(e -> actualizarSeleccion());
         rb2.addActionListener(e -> actualizarSeleccion());
@@ -71,7 +91,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         contenedor = new javax.swing.JPanel();
         panelInicio = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblIntroduce = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         btnJugar = new javax.swing.JButton();
         panelTemas = new javax.swing.JPanel();
@@ -99,14 +119,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblPreguntaTexto = new javax.swing.JLabel();
         lblTiempoTexto = new javax.swing.JLabel();
         panelRanking = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblRanking = new javax.swing.JTable();
+        lblRanking = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         contenedor.setLayout(new java.awt.CardLayout());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Introduce tu nombre");
+        lblIntroduce.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblIntroduce.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIntroduce.setText("Introduce tu nombre");
 
         btnJugar.setText("Comenzar");
         btnJugar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +148,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInicioLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblIntroduce, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelInicioLayout.createSequentialGroup()
                         .addGap(258, 258, 258)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -136,7 +161,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInicioLayout.createSequentialGroup()
                 .addGap(127, 127, 127)
-                .addComponent(jLabel3)
+                .addComponent(lblIntroduce)
                 .addGap(132, 132, 132)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
@@ -426,15 +451,73 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         contenedor.add(panelPreguntaTexto, "texto");
 
+        tblRanking.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Jugador", "Tema", "Puntuación"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblRanking);
+
+        lblRanking.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblRanking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRanking.setText("Ranking");
+
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Salir");
+
         javax.swing.GroupLayout panelRankingLayout = new javax.swing.GroupLayout(panelRanking);
         panelRanking.setLayout(panelRankingLayout);
         panelRankingLayout.setHorizontalGroup(
             panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panelRankingLayout.createSequentialGroup()
+                .addGroup(panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRankingLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(lblRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRankingLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addGroup(panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelRankingLayout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         panelRankingLayout.setVerticalGroup(
             panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(panelRankingLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblRanking)
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGroup(panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(79, 79, 79))
         );
 
         contenedor.add(panelRanking, "ranking");
@@ -488,7 +571,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (indicePreguntaActual < preguntas.size()) {
             mostrarPregunta();
         } else {
-            System.out.println("Juego terminado. Puntuación: " + jugadorActual.getPuntuacion());
+            gestorPersistencia.agregarJugador(jugadorActual);
+            añadirResultadoRanking();
+            cambiarPantalla("ranking");
         }
     }//GEN-LAST:event_btnRespuestaMultipleActionPerformed
 
@@ -513,11 +598,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (indicePreguntaActual < preguntas.size()) {
             mostrarPregunta();
         } else {
-            System.out.println("Juego terminado. Puntuación: " + jugadorActual.getPuntuacion());
+            gestorPersistencia.agregarJugador(jugadorActual);
+            añadirResultadoRanking();
+            txtNombre.setText("");
+            txtRespuesta.setText("");
+            cambiarPantalla("ranking");
         }
     }//GEN-LAST:event_btnRespuestaTextoActionPerformed
 
     private void btnCienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCienciaActionPerformed
+        jugadorActual.setTema("Ciencia");
         iniciarJuegoPorTema("Ciencia");
     }//GEN-LAST:event_btnCienciaActionPerformed
 
@@ -538,14 +628,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHistoriaMouseClicked
 
     private void btnGeografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeografiaActionPerformed
+        jugadorActual.setTema("Geografia");
         iniciarJuegoPorTema("Geografia");
     }//GEN-LAST:event_btnGeografiaActionPerformed
 
     private void btnLiteraturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiteraturaActionPerformed
+        jugadorActual.setTema("Literatura");
         iniciarJuegoPorTema("Literatura");
     }//GEN-LAST:event_btnLiteraturaActionPerformed
 
     private void btnHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriaActionPerformed
+        jugadorActual.setTema("Historia");
         iniciarJuegoPorTema("Historia");
     }//GEN-LAST:event_btnHistoriaActionPerformed
 
@@ -564,6 +657,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnJugarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cambiarPantalla("inicio");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -710,7 +807,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 if (indicePreguntaActual < preguntas.size()) {
                     mostrarPregunta();
                 } else {
-                    System.out.println("Juego terminado. Puntuación: " + jugadorActual.getPuntuacion());
+                    gestorPersistencia.agregarJugador(jugadorActual);
+                    añadirResultadoRanking();
+                    txtNombre.setText("");
+                    txtRespuesta.setText("");
+                    cambiarPantalla("ranking");
                 }
             }
         });
@@ -719,6 +820,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     public void iniciarJuegoPorTema(String tema) {
+        temaActual = tema;
         List<Pregunta> preguntasFiltradas = new ArrayList<>();
         for (Pregunta p : preguntas) {
             if (p.getTema().equalsIgnoreCase(tema)) {
@@ -737,6 +839,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mostrarPregunta();
     }
 
+    public void añadirResultadoRanking() {
+
+    DefaultTableModel modelo = (DefaultTableModel) tblRanking.getModel();
+    modelo.setRowCount(0);
+
+   
+    List<Jugador> ranking = gestorPersistencia.getRanking();
+
+    
+    for (Jugador j : ranking) {
+        modelo.addRow(new Object[]{
+            j.getNombre(),
+            j.getTema(),
+            j.getPuntuacion()
+        });
+    }
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCiencia;
@@ -748,15 +868,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRespuestaTexto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCiencia;
     private javax.swing.JLabel lblGeografia;
     private javax.swing.JLabel lblHistoria;
     private javax.swing.JLabel lblImagenTexto;
+    private javax.swing.JLabel lblIntroduce;
     private javax.swing.JLabel lblLiteratura;
     private javax.swing.JLabel lblPreguntaMultiple;
     private javax.swing.JLabel lblPreguntaTexto;
+    private javax.swing.JLabel lblRanking;
     private javax.swing.JLabel lblTiempoMultiple;
     private javax.swing.JLabel lblTiempoTexto;
     private javax.swing.JPanel panelInicio;
@@ -768,6 +892,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb2;
     private javax.swing.JRadioButton rb3;
     private javax.swing.JRadioButton rb4;
+    private javax.swing.JTable tblRanking;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtRespuesta;
     // End of variables declaration//GEN-END:variables
