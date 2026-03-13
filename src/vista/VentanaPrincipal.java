@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import modelo.Jugador;
 import modelo.Pregunta;
 
 /**
@@ -23,9 +24,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
     private List<Pregunta> preguntas;
     private int indicePreguntaActual = 0;
-    private int puntuacion = 0;
     private Timer temporizador;
     private int tiempoRestante;
+    private Jugador jugadorActual;
 
     public VentanaPrincipal(List<Pregunta> preguntas) {
         initComponents();
@@ -41,7 +42,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         rb4.addActionListener(e -> actualizarSeleccion());
 
         if (preguntas != null && !preguntas.isEmpty()) {
-            cambiarPantalla("temas");
+            cambiarPantalla("inicio");
         } else {
             logger.warning("La lista de preguntas está vacía o es null.");
         }
@@ -70,6 +71,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         contenedor = new javax.swing.JPanel();
         panelInicio = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        btnJugar = new javax.swing.JButton();
         panelTemas = new javax.swing.JPanel();
         btnCiencia = new javax.swing.JButton();
         btnLiteratura = new javax.swing.JButton();
@@ -100,15 +104,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         contenedor.setLayout(new java.awt.CardLayout());
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Introduce tu nombre");
+
+        btnJugar.setText("Comenzar");
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJugarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelInicioLayout = new javax.swing.GroupLayout(panelInicio);
         panelInicio.setLayout(panelInicioLayout);
         panelInicioLayout.setHorizontalGroup(
             panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panelInicioLayout.createSequentialGroup()
+                .addGroup(panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInicioLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInicioLayout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInicioLayout.createSequentialGroup()
+                        .addGap(336, 336, 336)
+                        .addComponent(btnJugar)))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         panelInicioLayout.setVerticalGroup(
             panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(panelInicioLayout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(jLabel3)
+                .addGap(132, 132, 132)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addComponent(btnJugar)
+                .addGap(120, 120, 120))
         );
 
         contenedor.add(panelInicio, "inicio");
@@ -444,7 +477,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
         if (seleccion.equals(p.getRespuestaCorrecta())) {
-            puntuacion++;
+            jugadorActual.sumarPunto();
             System.out.println("Correcto!");
         } else {
             System.out.println("Incorrecto");
@@ -455,7 +488,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (indicePreguntaActual < preguntas.size()) {
             mostrarPregunta();
         } else {
-            System.out.println("Juego terminado. Puntuación: " + puntuacion);
+            System.out.println("Juego terminado. Puntuación: " + jugadorActual.getPuntuacion());
         }
     }//GEN-LAST:event_btnRespuestaMultipleActionPerformed
 
@@ -469,7 +502,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         String respuestaJugador = txtRespuesta.getText();
 
         if (respuestaJugador.equalsIgnoreCase(p.getRespuestaCorrecta())) {
-            puntuacion++;
+            jugadorActual.sumarPunto();
             System.out.println("Correcto!");
         } else {
             System.out.println("Incorrecto");
@@ -480,7 +513,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (indicePreguntaActual < preguntas.size()) {
             mostrarPregunta();
         } else {
-            System.out.println("Juego terminado. Puntuación: " + puntuacion);
+            System.out.println("Juego terminado. Puntuación: " + jugadorActual.getPuntuacion());
         }
     }//GEN-LAST:event_btnRespuestaTextoActionPerformed
 
@@ -515,6 +548,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriaActionPerformed
         iniciarJuegoPorTema("Historia");
     }//GEN-LAST:event_btnHistoriaActionPerformed
+
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
+
+        String nombre = txtNombre.getText().trim();
+
+        if (nombre.isEmpty()) {
+            System.out.println("Introduce un nombre");
+            return;
+        }
+
+        jugadorActual = new Jugador(nombre);
+
+        cambiarPantalla("temas");
+
+
+    }//GEN-LAST:event_btnJugarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -661,7 +710,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 if (indicePreguntaActual < preguntas.size()) {
                     mostrarPregunta();
                 } else {
-                    System.out.println("Juego terminado. Puntuación: " + puntuacion);
+                    System.out.println("Juego terminado. Puntuación: " + jugadorActual.getPuntuacion());
                 }
             }
         });
@@ -693,12 +742,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCiencia;
     private javax.swing.JButton btnGeografia;
     private javax.swing.JButton btnHistoria;
+    private javax.swing.JButton btnJugar;
     private javax.swing.JButton btnLiteratura;
     private javax.swing.JButton btnRespuestaMultiple;
     private javax.swing.JButton btnRespuestaTexto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel contenedor;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblCiencia;
     private javax.swing.JLabel lblGeografia;
     private javax.swing.JLabel lblHistoria;
@@ -717,6 +768,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb2;
     private javax.swing.JRadioButton rb3;
     private javax.swing.JRadioButton rb4;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtRespuesta;
     // End of variables declaration//GEN-END:variables
 }
