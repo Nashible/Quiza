@@ -9,8 +9,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-       //System.setProperty("sun.java2d.uiScale.enabled", "false");
-        
         LectorJSON lector = new LectorJSON("src/recursos/preguntas.json");
         List<Pregunta> preguntas = lector.leerPreguntas();
 

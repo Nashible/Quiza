@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
@@ -20,7 +21,6 @@ import javax.swing.table.TableRowSorter;
 import modelo.Jugador;
 import modelo.Pregunta;
 import servicios.GestorPreguntas;
-
 
 /**
  *
@@ -44,7 +44,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        
+
         gestorPersistencia = new GestorPreguntas();
 
         DefaultTableModel modelo = (DefaultTableModel) tblRanking.getModel();
@@ -128,6 +128,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         contenedor.setLayout(new java.awt.CardLayout());
+
+        panelInicio.setBackground(new java.awt.Color(240, 240, 240));
 
         lblIntroduce.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblIntroduce.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -320,7 +322,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         contenedor.add(panelTemas, "temas");
 
-        panelPreguntaMultiple.setBackground(new java.awt.Color(153, 255, 153));
+        panelPreguntaMultiple.setBackground(new java.awt.Color(200, 255, 200));
 
         lblPreguntaMultiple.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblPreguntaMultiple.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -397,7 +399,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         contenedor.add(panelPreguntaMultiple, "pregunta");
 
-        panelPreguntaTexto.setBackground(new java.awt.Color(153, 255, 255));
+        panelPreguntaTexto.setBackground(new java.awt.Color(200, 230, 255));
         panelPreguntaTexto.setPreferredSize(new java.awt.Dimension(800, 600));
 
         btnRespuestaTexto.setText("Responder");
@@ -451,6 +453,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         contenedor.add(panelPreguntaTexto, "texto");
 
+        panelRanking.setBackground(new java.awt.Color(255, 255, 255));
+
         tblRanking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -486,6 +490,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRankingLayout = new javax.swing.GroupLayout(panelRanking);
         panelRanking.setLayout(panelRankingLayout);
@@ -555,15 +564,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
         if (seleccion == null) {
-            System.out.println("No seleccionó ninguna opción");
+            JOptionPane.showMessageDialog(this, "Debes seleccionar una opción antes de continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if (seleccion.equals(p.getRespuestaCorrecta())) {
             jugadorActual.sumarPunto();
-            System.out.println("Correcto!");
+            JOptionPane.showMessageDialog(this, "¡Correcto!", "Respuesta", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            System.out.println("Incorrecto");
+            JOptionPane.showMessageDialog(this, "Incorrecto. Inténtalo de nuevo.", "Respuesta", JOptionPane.ERROR_MESSAGE);
         }
 
         indicePreguntaActual++;
@@ -573,6 +582,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         } else {
             gestorPersistencia.agregarJugador(jugadorActual);
             añadirResultadoRanking();
+            txtNombre.setText("");
+            txtRespuesta.setText("");
             cambiarPantalla("ranking");
         }
     }//GEN-LAST:event_btnRespuestaMultipleActionPerformed
@@ -588,9 +599,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         if (respuestaJugador.equalsIgnoreCase(p.getRespuestaCorrecta())) {
             jugadorActual.sumarPunto();
-            System.out.println("Correcto!");
+            JOptionPane.showMessageDialog(this, "¡Correcto!", "Respuesta", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            System.out.println("Incorrecto");
+            JOptionPane.showMessageDialog(this, "Incorrecto. Inténtalo de nuevo.", "Respuesta", JOptionPane.ERROR_MESSAGE);
         }
 
         indicePreguntaActual++;
@@ -647,7 +658,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         String nombre = txtNombre.getText().trim();
 
         if (nombre.isEmpty()) {
-            System.out.println("Introduce un nombre");
+            JOptionPane.showMessageDialog(this, "Introduce un nombre.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (nombre.length() > 50) {
+            txtNombre.setText("");
+            JOptionPane.showMessageDialog(this, "El nombre no puede tener más de 50 caracteres.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -661,6 +677,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cambiarPantalla("inicio");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -784,6 +804,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarTemporizador() {
 
+        if (!panelPreguntaMultiple.isVisible() && !panelPreguntaTexto.isVisible()) {
+            return;
+        }
+
         tiempoRestante = 30;
 
         if (temporizador != null && temporizador.isRunning()) {
@@ -801,7 +825,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             if (tiempoRestante <= 0) {
                 temporizador.stop();
-                System.out.println("¡Tiempo agotado!");
+                JOptionPane.showMessageDialog(this, "¡Tiempo agotado!", "Tiempo", JOptionPane.WARNING_MESSAGE);
 
                 indicePreguntaActual++;
                 if (indicePreguntaActual < preguntas.size()) {
@@ -829,7 +853,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
         if (preguntasFiltradas.isEmpty()) {
-            System.out.println("No hay preguntas para este tema.");
+            JOptionPane.showMessageDialog(this, "No hay preguntas disponibles para este tema.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -841,21 +865,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void añadirResultadoRanking() {
 
-    DefaultTableModel modelo = (DefaultTableModel) tblRanking.getModel();
-    modelo.setRowCount(0);
+        DefaultTableModel modelo = (DefaultTableModel) tblRanking.getModel();
+        modelo.setRowCount(0);
 
-   
-    List<Jugador> ranking = gestorPersistencia.getRanking();
+        List<Jugador> ranking = gestorPersistencia.getRanking();
 
-    
-    for (Jugador j : ranking) {
-        modelo.addRow(new Object[]{
-            j.getNombre(),
-            j.getTema(),
-            j.getPuntuacion()
-        });
+        for (Jugador j : ranking) {
+            modelo.addRow(new Object[]{
+                j.getNombre(),
+                j.getTema(),
+                j.getPuntuacion()
+            });
+        }
     }
-}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
