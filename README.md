@@ -20,7 +20,7 @@ El código está organizado siguiendo una arquitectura limpia:
 
 ##  Requisitos e Instalación
 1. Tener instalado **Java JDK 11** o superior.
-2. Conexión a internet para los ranking en linea.
+2. Conexión a internet para los ranking en línea.
 
 
 ##  Autor
