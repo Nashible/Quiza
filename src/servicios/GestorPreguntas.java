@@ -27,14 +27,27 @@ public class GestorPreguntas {
 
     public void agregarJugador(Jugador j) {
 
-        if (!ranking.contains(j)) {
-            ranking.add(j);
+    boolean actualizado = false;
+
+    for (Jugador existente : ranking) {
+        if (existente.equals(j)) {
+           
+            if (j.getPuntuacion() > existente.getPuntuacion()) {
+                ranking.remove(existente);
+                ranking.add(j);
+            }
+            actualizado = true;
+            break;
         }
-
-        guardarRankingArchivo();
-
-        guardarRankingDB(j);
     }
+
+    if (!actualizado) {
+        ranking.add(j);
+    }
+
+    guardarRankingArchivo();
+    guardarRankingDB(j);
+}
 
     private void guardarRankingArchivo() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARCHIVO_RANKING))) {
@@ -107,7 +120,7 @@ public class GestorPreguntas {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 Set<String> existentes = new HashSet<>();
-                // Añadimos los jugadores del archivo al set para evitar duplicados
+                
                 for (Jugador j : rankingArchivo) {
                     existentes.add(j.getNombre() + "|" + j.getTema());
                 }

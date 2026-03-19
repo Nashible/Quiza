@@ -18,5 +18,79 @@
     "respuestaCorrecta": "América",
     "imagen": "src/recursos/imagenes/brasil.jpg",
     "tema": "Geografia"
+  },
+  {
+    "tipo": "MULTIPLE",
+    "enunciado": "¿Cuál de estos lugares es Machu Picchu?",
+    "opciones": [
+      "src/recursos/imagenes/moai.jpg",
+      "src/recursos/imagenes/stonehenge.jpg",
+      "src/recursos/imagenes/machupicchu.jpg",
+      "src/recursos/imagenes/piramidemaya.jpg"
+    ],
+    "respuestaCorrecta": "src/recursos/imagenes/machupicchu.jpg",
+    "imagen": "",
+    "tema": "Geografia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Qué país es el más grande del mundo?",
+    "respuestaCorrecta": "Rusia",
+    "imagen": "src/recursos/imagenes/tierra.jpg",
+    "tema": "Geografia"
+  },
+  {
+    "tipo": "MULTIPLE",
+    "enunciado": "¿Cuál es el mapa de Italia?",
+    "opciones": [
+      "src/recursos/imagenes/inglaterramapa.jpg",
+      "src/recursos/imagenes/alemaniamapa.png",
+      "src/recursos/imagenes/rumaniamapa.jpg",
+      "src/recursos/imagenes/italiamapa.jpg"
+    ],
+    "respuestaCorrecta": "src/recursos/imagenes/italiamapa.jpg",
+    "imagen": "",
+    "tema": "Geografia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Cuál es la capital de Kazajistán?",
+    "respuestaCorrecta": "Astaná",
+    "imagen": "src/recursos/imagenes/astana.jpg",
+    "tema": "Geografia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Cuál es la montaña más alta fuera de Asia?",
+    "respuestaCorrecta": "Aconcagua",
+    "imagen": "src/recursos/imagenes/montaña.jpg",
+    "tema": "Geografia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Cuál es el rio mas caudaloso del mundo?",
+    "respuestaCorrecta": "Amazonas",
+    "imagen": "src/recursos/imagenes/rio.jpg",
+    "tema": "Geografia"
+  },
+  {
+    "tipo": "MULTIPLE",
+    "enunciado": "¿Cuál es la bandera de Suecia?",
+    "opciones": [
+      "src/recursos/imagenes/finlandia.jpg",
+      "src/recursos/imagenes/noruega.png",
+      "src/recursos/imagenes/dinamarca.jpg",
+      "src/recursos/imagenes/suecia.png"
+    ],
+    "respuestaCorrecta": "src/recursos/imagenes/suecia.png",
+    "imagen": "",
+    "tema": "Geografia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿A que continente pertenece Kiribati?",
+    "respuestaCorrecta": "Oceanía",
+    "imagen": "src/recursos/imagenes/kiribati.jpg",
+    "tema": "Geografia"
   }
 ]
