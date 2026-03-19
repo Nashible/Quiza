@@ -580,6 +580,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (indicePreguntaActual < preguntas.size()) {
             mostrarPregunta();
         } else {
+            if (temporizador != null && temporizador.isRunning()) {
+                temporizador.stop();
+            }
             gestorPersistencia.agregarJugador(jugadorActual);
             añadirResultadoRanking();
             txtNombre.setText("");
@@ -609,6 +612,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (indicePreguntaActual < preguntas.size()) {
             mostrarPregunta();
         } else {
+            if (temporizador != null && temporizador.isRunning()) {
+                temporizador.stop();
+            }
             gestorPersistencia.agregarJugador(jugadorActual);
             añadirResultadoRanking();
             txtNombre.setText("");
@@ -831,6 +837,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 if (indicePreguntaActual < preguntas.size()) {
                     mostrarPregunta();
                 } else {
+                    if (temporizador != null && temporizador.isRunning()) {
+                        temporizador.stop();
+                    }
                     gestorPersistencia.agregarJugador(jugadorActual);
                     añadirResultadoRanking();
                     txtNombre.setText("");

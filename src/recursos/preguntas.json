@@ -14,9 +14,9 @@
   },
   {
     "tipo": "TEXTO",
-    "enunciado": "Escribe el nombre de este país:",
-    "respuestaCorrecta": "Japón",
-    "imagen": "src/recursos/imagenes/japon.png",
+    "enunciado": "¿En qué continente se encuentra Brasil?",
+    "respuestaCorrecta": "América",
+    "imagen": "src/recursos/imagenes/brasil.jpg",
     "tema": "Geografia"
   }
 ]
