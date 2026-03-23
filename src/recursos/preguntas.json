@@ -226,7 +226,7 @@
   },
   {
     "tipo": "MULTIPLE",
-    "enunciado": "¿Selecciona Jupiter",
+    "enunciado": "Selecciona Jupiter",
     "opciones": [
       "src/recursos/imagenes/ciencia/jupiter.jpg",
       "src/recursos/imagenes/ciencia/marte.jpg",
@@ -250,5 +250,19 @@
     "respuestaCorrecta": "Verdadero",
     "imagen": "src/recursos/imagenes/ciencia/esqueleto.jpg",
     "tema": "Ciencia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Cómo se llama este simbolo egipcio?",
+    "respuestaCorrecta": "Anj",
+    "imagen": "src/recursos/imagenes/historia/anj.jpg",
+    "tema": "Historia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿En qué año empezo la Segunda Guerra Mundial?",
+    "respuestaCorrecta": "1939",
+    "imagen": "src/recursos/imagenes/historia/segunda.jpg",
+    "tema": "Historia"
   }
 ]

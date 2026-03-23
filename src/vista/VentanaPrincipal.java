@@ -30,6 +30,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
     private List<Pregunta> preguntas;
+    private List<Pregunta> todasLasPreguntas;
     private int indicePreguntaActual = 0;
     private Timer temporizador;
     private int tiempoRestante;
@@ -39,7 +40,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal(List<Pregunta> preguntas) {
         initComponents();
-        this.preguntas = preguntas;
+        this.todasLasPreguntas = preguntas;
+        this.preguntas = new ArrayList<>(preguntas);
 
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -688,6 +690,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.preguntas = new ArrayList<>(todasLasPreguntas);
+        this.indicePreguntaActual = 0;
+
+        if (temporizador != null && temporizador.isRunning()) {
+            temporizador.stop();
+        }
         cambiarPantalla("inicio");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -863,7 +871,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void iniciarJuegoPorTema(String tema) {
         temaActual = tema;
         List<Pregunta> preguntasFiltradas = new ArrayList<>();
-        for (Pregunta p : preguntas) {
+        for (Pregunta p : todasLasPreguntas) {
             if (p.getTema().equalsIgnoreCase(tema)) {
                 preguntasFiltradas.add(p);
             }
