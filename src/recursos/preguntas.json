@@ -264,5 +264,73 @@
     "respuestaCorrecta": "1939",
     "imagen": "src/recursos/imagenes/historia/segunda.jpg",
     "tema": "Historia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Cuál era es sobrenombre de Juan XXIII?",
+    "respuestaCorrecta": "El Papa bueno",
+    "imagen": "src/recursos/imagenes/historia/papa.jpg",
+    "tema": "Historia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Qué filósofo griego fue maestro de Alejandro Magno?",
+    "respuestaCorrecta": "Aristóteles",
+    "imagen": "src/recursos/imagenes/historia/alejandro.jpg",
+    "tema": "Historia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Qué ciudad-estado griega era conocida por su poder militar?",
+    "respuestaCorrecta": "Esparta",
+    "imagen": "src/recursos/imagenes/historia/grecia.jpg",
+    "tema": "Historia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿En qué año se hundió el Titanic?",
+    "respuestaCorrecta": "1912",
+    "imagen": "src/recursos/imagenes/historia/titanic.jpg",
+    "tema": "Historia"
+  },
+  {
+    "tipo": "MULTIPLE",
+    "enunciado": "Selecciona al presidente de los EEUU Chester A. Arthur",
+    "opciones": [
+      "src/recursos/imagenes/historia/lincoln.jpg",
+      "src/recursos/imagenes/historia/washington.jpg",
+      "src/recursos/imagenes/historia/benjamin.jpg",
+      "src/recursos/imagenes/historia/chester.jpg"
+    ],
+    "respuestaCorrecta": "src/recursos/imagenes/historia/chester.jpg",
+    "imagen": "",
+    "tema": "Historia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "La guerra de los Cien Años duro 114 años Verdadero/Falso",
+    "respuestaCorrecta": "Falso",
+    "imagen": "src/recursos/imagenes/historia/guerracien.jpg",
+    "tema": "Historia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Cuál fue el último faraón de Egipto?",
+    "respuestaCorrecta": "Cleopatra",
+    "imagen": "src/recursos/imagenes/historia/egipto.jpg",
+    "tema": "Historia"
+  },
+  {
+    "tipo": "MULTIPLE",
+    "enunciado": "¿Cuál es la flor nacional de España?",
+    "opciones": [
+      "src/recursos/imagenes/historia/clavel.jpg",
+      "src/recursos/imagenes/historia/rosa.jpg",
+      "src/recursos/imagenes/historia/crisantemo.jpg",
+      "src/recursos/imagenes/historia/amapola.jpg"
+    ],
+    "respuestaCorrecta": "src/recursos/imagenes/historia/clavel.jpg",
+    "imagen": "",
+    "tema": "Historia"
   }
 ]
