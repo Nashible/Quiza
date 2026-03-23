@@ -322,14 +322,14 @@
   },
   {
     "tipo": "MULTIPLE",
-    "enunciado": "¿Cuál es la flor nacional de España?",
+    "enunciado": "¿Cuál es el monumento más antiguo?",
     "opciones": [
-      "src/recursos/imagenes/historia/clavel.jpg",
-      "src/recursos/imagenes/historia/rosa.jpg",
-      "src/recursos/imagenes/historia/crisantemo.jpg",
-      "src/recursos/imagenes/historia/amapola.jpg"
+      "src/recursos/imagenes/historia/eiffel.jpg",
+      "src/recursos/imagenes/historia/libertad.jpg",
+      "src/recursos/imagenes/historia/pisa.jpg",
+      "src/recursos/imagenes/historia/redentor.jpg"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/historia/clavel.jpg",
+    "respuestaCorrecta": "src/recursos/imagenes/historia/pisa.jpg",
     "imagen": "",
     "tema": "Historia"
   }
