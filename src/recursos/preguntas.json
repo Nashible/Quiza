@@ -88,9 +88,85 @@
   },
   {
     "tipo": "TEXTO",
-    "enunciado": "¿A que continente pertenece Kiribati?",
+    "enunciado": "¿A qué continente pertenece Kiribati?",
     "respuestaCorrecta": "Oceanía",
     "imagen": "src/recursos/imagenes/kiribati.jpg",
     "tema": "Geografia"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Quién es el protagonista masculino de La Celestina?",
+    "respuestaCorrecta": "Calisto",
+    "imagen": "src/recursos/imagenes/celestina.jpg",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿A qué género literario pertenece el Lazarillo de Tormes?",
+    "respuestaCorrecta": "La novela picaresca",
+    "imagen": "src/recursos/imagenes/lazarillo.jpg",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Quién es la autor de La Regenta?",
+    "respuestaCorrecta": "Clarín",
+    "imagen": "src/recursos/imagenes/laregenta.jpg",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Qué simboliza el sapo en La Regenta?",
+    "respuestaCorrecta": "La lujuria",
+    "imagen": "src/recursos/imagenes/laregenta.jpg",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Qué dramaturgo era conocido como Fénix de los Ingenios?",
+    "respuestaCorrecta": "Lope de Vega",
+    "imagen": "src/recursos/imagenes/lopedevega.jpg",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "MULTIPLE",
+    "enunciado": "¿Quién escribio El Buscón?",
+    "opciones": [
+      "src/recursos/imagenes/lopedevega2.jpg",
+      "src/recursos/imagenes/gongora.jpg",
+      "src/recursos/imagenes/calderon.jpg",
+      "src/recursos/imagenes/quevedo.jpg"
+    ],
+    "respuestaCorrecta": "src/recursos/imagenes/quevedo.jpg",
+    "imagen": "",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Cómo murio Federico García Lorca?",
+    "respuestaCorrecta": "Fusilado",
+    "imagen": "src/recursos/imagenes/lorca.jpg",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿De que generación es Rafael Alberti?",
+    "respuestaCorrecta": "Generación del 27",
+    "imagen": "src/recursos/imagenes/alberti.jpg",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿Cómo se llamaba el caballo de Don Quijote?",
+    "respuestaCorrecta": "Rocinante",
+    "imagen": "src/recursos/imagenes/rocinante.jpg",
+    "tema": "Literatura"
+  },
+  {
+    "tipo": "TEXTO",
+    "enunciado": "¿De quién son los versos 'Caminante, no hay camino...'?",
+    "respuestaCorrecta": "Antonio Machado",
+    "imagen": "src/recursos/imagenes/camino.jpg",
+    "tema": "Literatura"
   }
 ]

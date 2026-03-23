@@ -32,7 +32,7 @@ public class Pregunta {
         this.tema = tema;
     }
 
-    // Getters
+    
     public Tipo getTipo() {
         return tipo;
     }
