@@ -96,6 +96,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblIntroduce = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         btnJugar = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         panelTemas = new javax.swing.JPanel();
         btnCiencia = new javax.swing.JButton();
         btnLiteratura = new javax.swing.JButton();
@@ -144,6 +145,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/ranking.png"))); // NOI18N
+        jButton3.setText("Ranking");
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelInicioLayout = new javax.swing.GroupLayout(panelInicio);
         panelInicio.setLayout(panelInicioLayout);
         panelInicioLayout.setHorizontalGroup(
@@ -155,11 +170,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(lblIntroduce, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelInicioLayout.createSequentialGroup()
                         .addGap(258, 258, 258)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelInicioLayout.createSequentialGroup()
-                        .addGap(336, 336, 336)
-                        .addComponent(btnJugar)))
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(105, Short.MAX_VALUE))
+            .addGroup(panelInicioLayout.createSequentialGroup()
+                .addGap(336, 336, 336)
+                .addComponent(btnJugar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(52, 52, 52))
         );
         panelInicioLayout.setVerticalGroup(
             panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +186,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(lblIntroduce)
                 .addGap(132, 132, 132)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addComponent(btnJugar)
-                .addGap(120, 120, 120))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGroup(panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInicioLayout.createSequentialGroup()
+                        .addComponent(btnJugar)
+                        .addGap(120, 120, 120))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInicioLayout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(50, 50, 50))))
         );
 
         contenedor.add(panelInicio, "inicio");
@@ -703,6 +726,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        añadirResultadoRanking();
+        cambiarPantalla("ranking");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -917,6 +945,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel contenedor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCiencia;
