@@ -1,14 +1,14 @@
 [
   {
     "tipo": "MULTIPLE",
-    "enunciado": "¿Cuál de estas banderas es de España?",
+    "enunciado": "¿Cuál de estas banderas es de Colombia?",
     "opciones": [
-      "src/recursos/imagenes/geografia/francia.png",
-      "src/recursos/imagenes/geografia/españa.png",
-      "src/recursos/imagenes/geografia/italia.png",
-      "src/recursos/imagenes/geografia/alemania.png"
+      "/recursos/imagenes/geografia/venezuela.png",
+      "/recursos/imagenes/geografia/brasil.png",
+      "/recursos/imagenes/geografia/colombia.png",
+      "/recursos/imagenes/geografia/cuba.png"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/geografia/españa.png",
+    "respuestaCorrecta": "/recursos/imagenes/geografia/colombia.png",
     "imagen": "",
     "tema": "Geografia"
   },
@@ -16,19 +16,19 @@
     "tipo": "TEXTO",
     "enunciado": "¿En qué continente se encuentra Brasil?",
     "respuestaCorrecta": "América",
-    "imagen": "src/recursos/imagenes/geografia/brasil.jpg",
+    "imagen": "/recursos/imagenes/geografia/brasil.jpg",
     "tema": "Geografia"
   },
   {
     "tipo": "MULTIPLE",
     "enunciado": "¿Cuál de estos lugares es Machu Picchu?",
     "opciones": [
-      "src/recursos/imagenes/geografia/moai.jpg",
-      "src/recursos/imagenes/geografia/stonehenge.jpg",
-      "src/recursos/imagenes/geografia/machupicchu.jpg",
-      "src/recursos/imagenes/geografia/piramidemaya.jpg"
+      "/recursos/imagenes/geografia/moai.jpg",
+      "/recursos/imagenes/geografia/stonehenge.jpg",
+      "/recursos/imagenes/geografia/machupicchu.jpg",
+      "/recursos/imagenes/geografia/piramidemaya.jpg"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/geografia/machupicchu.jpg",
+    "respuestaCorrecta": "/recursos/imagenes/geografia/machupicchu.jpg",
     "imagen": "",
     "tema": "Geografia"
   },
@@ -36,19 +36,19 @@
     "tipo": "TEXTO",
     "enunciado": "¿Qué país es el más grande del mundo?",
     "respuestaCorrecta": "Rusia",
-    "imagen": "src/recursos/imagenes/geografia/tierra.jpg",
+    "imagen": "/recursos/imagenes/geografia/tierra.jpg",
     "tema": "Geografia"
   },
   {
     "tipo": "MULTIPLE",
     "enunciado": "¿Cuál es el mapa de Italia?",
     "opciones": [
-      "src/recursos/imagenes/geografia/inglaterramapa.jpg",
-      "src/recursos/imagenes/geografia/alemaniamapa.png",
-      "src/recursos/imagenes/geografia/rumaniamapa.jpg",
-      "src/recursos/imagenes/geografia/italiamapa.jpg"
+      "/recursos/imagenes/geografia/inglaterramapa.jpg",
+      "/recursos/imagenes/geografia/alemaniamapa.png",
+      "/recursos/imagenes/geografia/rumaniamapa.jpg",
+      "/recursos/imagenes/geografia/italiamapa.jpg"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/geografia/italiamapa.jpg",
+    "respuestaCorrecta": "/recursos/imagenes/geografia/italiamapa.jpg",
     "imagen": "",
     "tema": "Geografia"
   },
@@ -56,33 +56,33 @@
     "tipo": "TEXTO",
     "enunciado": "¿Cuál es la capital de Kazajistán?",
     "respuestaCorrecta": "Astaná",
-    "imagen": "src/recursos/imagenes/geografia/astana.jpg",
+    "imagen": "/recursos/imagenes/geografia/astana.jpg",
     "tema": "Geografia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cuál es la montaña más alta fuera de Asia?",
     "respuestaCorrecta": "Aconcagua",
-    "imagen": "src/recursos/imagenes/geografia/montaña.jpg",
+    "imagen": "/recursos/imagenes/geografia/montaña.jpg",
     "tema": "Geografia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cuál es el rio mas caudaloso del mundo?",
     "respuestaCorrecta": "Amazonas",
-    "imagen": "src/recursos/imagenes/geografia/rio.jpg",
+    "imagen": "/recursos/imagenes/geografia/rio.jpg",
     "tema": "Geografia"
   },
   {
     "tipo": "MULTIPLE",
     "enunciado": "¿Cuál es la bandera de Suecia?",
     "opciones": [
-      "src/recursos/imagenes/geografia/finlandia.jpg",
-      "src/recursos/imagenes/geografia/noruega.png",
-      "src/recursos/imagenes/geografia/dinamarca.jpg",
-      "src/recursos/imagenes/geografia/suecia.png"
+      "/recursos/imagenes/geografia/finlandia.jpg",
+      "/recursos/imagenes/geografia/noruega.png",
+      "/recursos/imagenes/geografia/dinamarca.jpg",
+      "/recursos/imagenes/geografia/suecia.png"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/geografia/suecia.png",
+    "respuestaCorrecta": "/recursos/imagenes/geografia/suecia.png",
     "imagen": "",
     "tema": "Geografia"
   },
@@ -90,54 +90,54 @@
     "tipo": "TEXTO",
     "enunciado": "¿A qué continente pertenece Kiribati?",
     "respuestaCorrecta": "Oceanía",
-    "imagen": "src/recursos/imagenes/geografia/kiribati.jpg",
+    "imagen": "/recursos/imagenes/geografia/kiribati.jpg",
     "tema": "Geografia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Quién es el protagonista masculino de La Celestina?",
     "respuestaCorrecta": "Calisto",
-    "imagen": "src/recursos/imagenes/literatura/celestina.jpg",
+    "imagen": "/recursos/imagenes/literatura/celestina.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿A qué género literario pertenece el Lazarillo de Tormes?",
     "respuestaCorrecta": "La novela picaresca",
-    "imagen": "src/recursos/imagenes/literatura/lazarillo.jpg",
+    "imagen": "/recursos/imagenes/literatura/lazarillo.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Quién es la autor de La Regenta?",
     "respuestaCorrecta": "Clarín",
-    "imagen": "src/recursos/imagenes/literatura/laregenta.jpg",
+    "imagen": "/recursos/imagenes/literatura/laregenta.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Qué simboliza el sapo en La Regenta?",
     "respuestaCorrecta": "La lujuria",
-    "imagen": "src/recursos/imagenes/literatura/laregenta.jpg",
+    "imagen": "/recursos/imagenes/literatura/laregenta.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Qué dramaturgo era conocido como Fénix de los Ingenios?",
     "respuestaCorrecta": "Lope de Vega",
-    "imagen": "src/recursos/imagenes/literatura/lopedevega.jpg",
+    "imagen": "/recursos/imagenes/literatura/lopedevega.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "MULTIPLE",
     "enunciado": "¿Quién escribio El Buscón?",
     "opciones": [
-      "src/recursos/imagenes/literatura/lopedevega2.jpg",
-      "src/recursos/imagenes/literatura/gongora.jpg",
-      "src/recursos/imagenes/literatura/calderon.jpg",
-      "src/recursos/imagenes/literatura/quevedo.jpg"
+      "/recursos/imagenes/literatura/lopedevega2.jpg",
+      "/recursos/imagenes/literatura/gongora.jpg",
+      "/recursos/imagenes/literatura/calderon.jpg",
+      "/recursos/imagenes/literatura/quevedo.jpg"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/literatura/quevedo.jpg",
+    "respuestaCorrecta": "/recursos/imagenes/literatura/quevedo.jpg",
     "imagen": "",
     "tema": "Literatura"
   },
@@ -145,61 +145,61 @@
     "tipo": "TEXTO",
     "enunciado": "¿Cómo murio Federico García Lorca?",
     "respuestaCorrecta": "Fusilado",
-    "imagen": "src/recursos/imagenes/literatura/lorca.jpg",
+    "imagen": "/recursos/imagenes/literatura/lorca.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿De que generación es Rafael Alberti?",
     "respuestaCorrecta": "Generación del 27",
-    "imagen": "src/recursos/imagenes/literatura/alberti.jpg",
+    "imagen": "/recursos/imagenes/literatura/alberti.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cómo se llamaba el caballo de Don Quijote?",
     "respuestaCorrecta": "Rocinante",
-    "imagen": "src/recursos/imagenes/literatura/rocinante.jpg",
+    "imagen": "/recursos/imagenes/literatura/rocinante.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿De quién son los versos 'Caminante, no hay camino...'?",
     "respuestaCorrecta": "Antonio Machado",
-    "imagen": "src/recursos/imagenes/literatura/camino.jpg",
+    "imagen": "/recursos/imagenes/literatura/camino.jpg",
     "tema": "Literatura"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cuál es el elemento más abundante en el universo?",
     "respuestaCorrecta": "Hidrógeno",
-    "imagen": "src/recursos/imagenes/ciencia/universo.jpg",
+    "imagen": "/recursos/imagenes/ciencia/universo.jpg",
     "tema": "Ciencia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cuál es el hueso más pequeño del cuerpo humano?",
     "respuestaCorrecta": "Estribo",
-    "imagen": "src/recursos/imagenes/ciencia/esqueleto.jpg",
+    "imagen": "/recursos/imagenes/ciencia/esqueleto.jpg",
     "tema": "Ciencia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "El Triángulo de verano esta constituido por Altair, Vega y ...",
     "respuestaCorrecta": "Deneb",
-    "imagen": "src/recursos/imagenes/ciencia/triangulo.jpg",
+    "imagen": "/recursos/imagenes/ciencia/triangulo.jpg",
     "tema": "Ciencia"
   },
   {
     "tipo": "MULTIPLE",
     "enunciado": "¿Cuál es un Quasar?",
     "opciones": [
-      "src/recursos/imagenes/ciencia/neutrones.jpg",
-      "src/recursos/imagenes/ciencia/quasar.jpg",
-      "src/recursos/imagenes/ciencia/agujero.png",
-      "src/recursos/imagenes/ciencia/roja.jpg"
+      "/recursos/imagenes/ciencia/neutrones.jpg",
+      "/recursos/imagenes/ciencia/quasar.jpg",
+      "/recursos/imagenes/ciencia/agujero.png",
+      "/recursos/imagenes/ciencia/roja.jpg"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/ciencia/quasar.jpg",
+    "respuestaCorrecta": "/recursos/imagenes/ciencia/quasar.jpg",
     "imagen": "",
     "tema": "Ciencia"
   },
@@ -207,33 +207,33 @@
     "tipo": "TEXTO",
     "enunciado": "Los agujeros de gusano también son conocidos como puentes Einstein-",
     "respuestaCorrecta": "Rosen",
-    "imagen": "src/recursos/imagenes/ciencia/gusano.jpg",
+    "imagen": "/recursos/imagenes/ciencia/gusano.jpg",
     "tema": "Ciencia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿La velocidad de la luz es 300.000 km/h Verdadero o Falso?",
     "respuestaCorrecta": "Falso",
-    "imagen": "src/recursos/imagenes/ciencia/luz.jpg",
+    "imagen": "/recursos/imagenes/ciencia/luz.jpg",
     "tema": "Ciencia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cuál es el simbolo del oro en la tabla periódica?",
     "respuestaCorrecta": "Au",
-    "imagen": "src/recursos/imagenes/ciencia/oro.jpg",
+    "imagen": "/recursos/imagenes/ciencia/oro.jpg",
     "tema": "Ciencia"
   },
   {
     "tipo": "MULTIPLE",
     "enunciado": "Selecciona Jupiter",
     "opciones": [
-      "src/recursos/imagenes/ciencia/jupiter.jpg",
-      "src/recursos/imagenes/ciencia/marte.jpg",
-      "src/recursos/imagenes/ciencia/saturno.jpg",
-      "src/recursos/imagenes/ciencia/mercurio.jpg"
+      "/recursos/imagenes/ciencia/jupiter.jpg",
+      "/recursos/imagenes/ciencia/marte.jpg",
+      "/recursos/imagenes/ciencia/saturno.jpg",
+      "/recursos/imagenes/ciencia/mercurio.jpg"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/ciencia/jupiter.jpg",
+    "respuestaCorrecta": "/recursos/imagenes/ciencia/jupiter.jpg",
     "imagen": "",
     "tema": "Ciencia"
   },
@@ -241,68 +241,68 @@
     "tipo": "TEXTO",
     "enunciado": "¿Cuál es el satélite natural más grande de Saturno?",
     "respuestaCorrecta": "Titán",
-    "imagen": "src/recursos/imagenes/ciencia/titan.png",
+    "imagen": "/recursos/imagenes/ciencia/titan.png",
     "tema": "Ciencia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "El cuerpo humano adulto tiene 206 huesos Verdadero/Falso",
     "respuestaCorrecta": "Verdadero",
-    "imagen": "src/recursos/imagenes/ciencia/esqueleto.jpg",
+    "imagen": "/recursos/imagenes/ciencia/esqueleto.jpg",
     "tema": "Ciencia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cómo se llama este simbolo egipcio?",
     "respuestaCorrecta": "Anj",
-    "imagen": "src/recursos/imagenes/historia/anj.jpg",
+    "imagen": "/recursos/imagenes/historia/anj.jpg",
     "tema": "Historia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿En qué año empezo la Segunda Guerra Mundial?",
     "respuestaCorrecta": "1939",
-    "imagen": "src/recursos/imagenes/historia/segunda.jpg",
+    "imagen": "/recursos/imagenes/historia/segunda.jpg",
     "tema": "Historia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cuál era es sobrenombre de Juan XXIII?",
     "respuestaCorrecta": "El Papa bueno",
-    "imagen": "src/recursos/imagenes/historia/papa.jpg",
+    "imagen": "/recursos/imagenes/historia/papa.jpg",
     "tema": "Historia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Qué filósofo griego fue maestro de Alejandro Magno?",
     "respuestaCorrecta": "Aristóteles",
-    "imagen": "src/recursos/imagenes/historia/alejandro.jpg",
+    "imagen": "/recursos/imagenes/historia/alejandro.jpg",
     "tema": "Historia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Qué ciudad-estado griega era conocida por su poder militar?",
     "respuestaCorrecta": "Esparta",
-    "imagen": "src/recursos/imagenes/historia/grecia.jpg",
+    "imagen": "/recursos/imagenes/historia/grecia.jpg",
     "tema": "Historia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿En qué año se hundió el Titanic?",
     "respuestaCorrecta": "1912",
-    "imagen": "src/recursos/imagenes/historia/titanic.jpg",
+    "imagen": "/recursos/imagenes/historia/titanic.jpg",
     "tema": "Historia"
   },
   {
     "tipo": "MULTIPLE",
     "enunciado": "Selecciona al presidente de los EEUU Chester A. Arthur",
     "opciones": [
-      "src/recursos/imagenes/historia/lincoln.jpg",
-      "src/recursos/imagenes/historia/washington.jpg",
-      "src/recursos/imagenes/historia/benjamin.jpg",
-      "src/recursos/imagenes/historia/chester.jpg"
+      "/recursos/imagenes/historia/lincoln.jpg",
+      "/recursos/imagenes/historia/washington.jpg",
+      "/recursos/imagenes/historia/benjamin.jpg",
+      "/recursos/imagenes/historia/chester.jpg"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/historia/chester.jpg",
+    "respuestaCorrecta": "/recursos/imagenes/historia/chester.jpg",
     "imagen": "",
     "tema": "Historia"
   },
@@ -310,26 +310,26 @@
     "tipo": "TEXTO",
     "enunciado": "La guerra de los Cien Años duro 114 años Verdadero/Falso",
     "respuestaCorrecta": "Falso",
-    "imagen": "src/recursos/imagenes/historia/guerracien.jpg",
+    "imagen": "/recursos/imagenes/historia/guerracien.jpg",
     "tema": "Historia"
   },
   {
     "tipo": "TEXTO",
     "enunciado": "¿Cuál fue el último faraón de Egipto?",
     "respuestaCorrecta": "Cleopatra",
-    "imagen": "src/recursos/imagenes/historia/egipto.jpg",
+    "imagen": "/recursos/imagenes/historia/egipto.jpg",
     "tema": "Historia"
   },
   {
     "tipo": "MULTIPLE",
     "enunciado": "¿Cuál es el monumento más antiguo?",
     "opciones": [
-      "src/recursos/imagenes/historia/eiffel.jpg",
-      "src/recursos/imagenes/historia/libertad.jpg",
-      "src/recursos/imagenes/historia/pisa.jpg",
-      "src/recursos/imagenes/historia/redentor.jpg"
+      "/recursos/imagenes/historia/eiffel.png",
+      "/recursos/imagenes/historia/libertad.jpg",
+      "/recursos/imagenes/historia/pisa.jpg",
+      "/recursos/imagenes/historia/redentor.jpg"
     ],
-    "respuestaCorrecta": "src/recursos/imagenes/historia/pisa.jpg",
+    "respuestaCorrecta": "/recursos/imagenes/historia/pisa.jpg",
     "imagen": "",
     "tema": "Historia"
   }

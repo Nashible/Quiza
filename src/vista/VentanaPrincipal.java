@@ -96,7 +96,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblIntroduce = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         btnJugar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnRanking = new javax.swing.JButton();
         panelTemas = new javax.swing.JPanel();
         btnCiencia = new javax.swing.JButton();
         btnLiteratura = new javax.swing.JButton();
@@ -145,17 +145,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/ranking.png"))); // NOI18N
-        jButton3.setText("Ranking");
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnRanking.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRanking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenes/ranking.png"))); // NOI18N
+        btnRanking.setText("Ranking");
+        btnRanking.setBorderPainted(false);
+        btnRanking.setContentAreaFilled(false);
+        btnRanking.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRanking.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnRanking.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRanking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnRankingActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(336, 336, 336)
                 .addComponent(btnJugar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnRanking)
                 .addGap(52, 52, 52))
         );
         panelInicioLayout.setVerticalGroup(
@@ -192,7 +192,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnJugar)
                         .addGap(120, 120, 120))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInicioLayout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(btnRanking)
                         .addGap(50, 50, 50))))
         );
 
@@ -726,10 +726,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRankingActionPerformed
         añadirResultadoRanking();
         cambiarPantalla("ranking");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnRankingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -802,18 +802,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     private void configurarRadio(JRadioButton rb, String ruta) {
+        java.net.URL url = getClass().getResource(ruta);
 
-        ImageIcon icon = new ImageIcon(ruta);
+        if (url == null) {
+            System.err.println("No se encontró la imagen: " + ruta);
+            return;
+        }
 
+        ImageIcon icon = new ImageIcon(url);
         Image img = icon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 
         rb.setIcon(new ImageIcon(img));
-
         rb.setBorderPainted(true);
         rb.setFocusPainted(false);
         rb.setContentAreaFilled(false);
         rb.setHorizontalAlignment(SwingConstants.CENTER);
-
     }
 
     private void actualizarSeleccion() {
@@ -842,15 +845,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     private void configurarImagenLabel(javax.swing.JLabel label, String ruta, int ancho, int alto) {
-        if (ruta == null || ruta.isEmpty()) {
-            label.setIcon(null);
-            return;
-        }
 
-        ImageIcon icon = new ImageIcon(ruta);
-        Image img = icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
-        label.setIcon(new ImageIcon(img));
+    if (ruta == null || ruta.isEmpty()) {
+        label.setIcon(null);
+        return;
     }
+
+    java.net.URL url = getClass().getResource(ruta);
+
+    if (url == null) {
+        System.err.println("No se encontró la imagen: " + ruta);
+        label.setIcon(null);
+        return;
+    }
+
+    ImageIcon icon = new ImageIcon(url);
+    Image img = icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+    label.setIcon(new ImageIcon(img));
+}
 
     private void iniciarTemporizador() {
 
@@ -939,13 +951,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnHistoria;
     private javax.swing.JButton btnJugar;
     private javax.swing.JButton btnLiteratura;
+    private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnRespuestaMultiple;
     private javax.swing.JButton btnRespuestaTexto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel contenedor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCiencia;

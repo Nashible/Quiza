@@ -1,7 +1,8 @@
 package servicios;
 
 import modelo.Pregunta;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.JSONArray;
@@ -20,7 +21,15 @@ public class LectorJSON {
         List<Pregunta> preguntas = new ArrayList<>();
         JSONParser parser = new JSONParser();
 
-        try (FileReader reader = new FileReader(rutaArchivo)) {
+        try {
+            InputStream is = getClass().getResourceAsStream(rutaArchivo);
+
+            if (is == null) {
+                System.err.println("No se encontró el archivo JSON: " + rutaArchivo);
+                return preguntas;
+            }
+
+            InputStreamReader reader = new InputStreamReader(is);
             JSONArray array = (JSONArray) parser.parse(reader);
 
             for (Object obj : array) {
@@ -31,16 +40,18 @@ public class LectorJSON {
                 String imagen = (String) jsonPregunta.get("imagen");
                 String tema = (String) jsonPregunta.get("tema");
 
-                if (tipo.equals("MULTIPLE")) {
+                if ("MULTIPLE".equals(tipo)) {
                     JSONArray opcionesJSON = (JSONArray) jsonPregunta.get("opciones");
                     String[] opciones = new String[opcionesJSON.size()];
+
                     for (int i = 0; i < opcionesJSON.size(); i++) {
                         opciones[i] = (String) opcionesJSON.get(i);
                     }
+
                     String respuestaCorrecta = (String) jsonPregunta.get("respuestaCorrecta");
                     preguntas.add(new Pregunta(enunciado, opciones, respuestaCorrecta, imagen, tema));
 
-                } else if (tipo.equals("TEXTO")) {
+                } else if ("TEXTO".equals(tipo)) {
                     String respuestaCorrecta = (String) jsonPregunta.get("respuestaCorrecta");
                     preguntas.add(new Pregunta(enunciado, respuestaCorrecta, imagen, tema));
                 }
@@ -52,5 +63,4 @@ public class LectorJSON {
 
         return preguntas;
     }
-
 }

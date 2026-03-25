@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LectorJSON lector = new LectorJSON("src/recursos/preguntas.json");
+        LectorJSON lector = new LectorJSON("/recursos/preguntas.json");
         List<Pregunta> preguntas = lector.leerPreguntas();
 
         if (preguntas.isEmpty()) {
