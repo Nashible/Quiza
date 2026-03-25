@@ -19,7 +19,7 @@ El código está organizado siguiendo una arquitectura limpia:
 - `recursos`: Archivos externos como `preguntas.json` e imágenes.
 
 ##  Requisitos e Instalación
-1. Tener instalado **Java JDK 11** o superior.
+1. Tener instalado **Java JDK 24** o superior.
 2. Conexión a internet para los ranking en línea.
 
 
