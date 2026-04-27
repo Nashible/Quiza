@@ -23,8 +23,11 @@ import modelo.Pregunta;
 import servicios.GestorPreguntas;
 
 /**
- *
+ *Clase VentanaPrincipal
+ * 
+ * Se encarga de la parte visual y la lógica dura del juego
  * @author Antonio
+ * @version 1.0
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
@@ -48,21 +51,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         gestorPersistencia = new GestorPreguntas();
-
+//Limpiamos la tabla
         DefaultTableModel modelo = (DefaultTableModel) tblRanking.getModel();
         modelo.setRowCount(0);
-
+//Ordenamos por puntuación de mayor a menor que es la columna 2
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
         tblRanking.setRowSorter(sorter);
         sorter.setSortKeys(Arrays.asList(
                 new RowSorter.SortKey(2, SortOrder.DESCENDING)
         ));
-
+//listener de los botones de radio para respuesta múltiple
         rb1.addActionListener(e -> actualizarSeleccion());
         rb2.addActionListener(e -> actualizarSeleccion());
         rb3.addActionListener(e -> actualizarSeleccion());
         rb4.addActionListener(e -> actualizarSeleccion());
-
+//Empezamos mostrando la pantalla inicio
         if (preguntas != null && !preguntas.isEmpty()) {
             cambiarPantalla("inicio");
         } else {
@@ -125,8 +128,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRanking = new javax.swing.JTable();
         lblRanking = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -514,17 +517,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblRanking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRanking.setText("Ranking");
 
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Salir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -541,9 +544,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(158, 158, 158)
                         .addGroup(panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelRankingLayout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnVolver)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
+                                .addComponent(btnSalir))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
@@ -556,8 +559,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnVolver)
+                    .addComponent(btnSalir))
                 .addGap(79, 79, 79))
         );
 
@@ -712,7 +715,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnJugarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.preguntas = new ArrayList<>(todasLasPreguntas);
         this.indicePreguntaActual = 0;
 
@@ -720,11 +723,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             temporizador.stop();
         }
         cambiarPantalla("inicio");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRankingActionPerformed
         añadirResultadoRanking();
@@ -755,52 +758,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new VentanaPrincipal().setVisible(true));
     }
-
+/**Cambia a la pantalla que se le pase*/
     public void cambiarPantalla(String nombre) {
         CardLayout card = (CardLayout) contenedor.getLayout();
         card.show(contenedor, nombre);
     }
-
+/**Muestra los paneles que toquen según el tipo de pregunta con su texto e imagenes*/
     public void mostrarPregunta() {
-
+//Limpiamos  la selección anterior
         buttonGroup1.clearSelection();
         rb1.setBorder(null);
         rb2.setBorder(null);
         rb3.setBorder(null);
         rb4.setBorder(null);
-
+//Nos aseguramos que no haya mas preguntas
         if (indicePreguntaActual >= preguntas.size()) {
             System.out.println("Se acabaron las preguntas");
             return;
         }
-
+//nos situamos en la pregunta actual
         Pregunta p = preguntas.get(indicePreguntaActual);
-
+//Si es de tipo múltiple cambiamos a su panel
         if (p.getTipo() == Pregunta.Tipo.MULTIPLE) {
 
             cambiarPantalla("pregunta");
-
+//Ponemos el texto de la pregunta
             lblPreguntaMultiple.setText(p.getEnunciado());
-
+//Configuramos las imágenes
             configurarRadio(rb1, p.getOpciones()[0]);
             configurarRadio(rb2, p.getOpciones()[1]);
             configurarRadio(rb3, p.getOpciones()[2]);
             configurarRadio(rb4, p.getOpciones()[3]);
-
+//Si el de tipo texto cambiamos a su panel
         } else if (p.getTipo() == Pregunta.Tipo.TEXTO) {
 
             cambiarPantalla("texto");
-
+//Ponemos el texto de la pregunta
             lblPreguntaTexto.setText(p.getEnunciado());
-
+//Configuramos la imágen que lo acompaña y limpiamos la cajetilla de texto
             configurarImagenLabel(lblImagenTexto, p.getImagen(), 200, 240);
             txtRespuesta.setText("");
-        }
+        }//El temporizador empieza a correr
         iniciarTemporizador();
         revalidate();
         repaint();
     }
-
+/**Convierte la ruta de la imagen en un boton con una imagen*/
     private void configurarRadio(JRadioButton rb, String ruta) {
         java.net.URL url = getClass().getResource(ruta);
 
@@ -808,17 +811,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             System.err.println("No se encontró la imagen: " + ruta);
             return;
         }
-
+//Convertimos la imagen en un objeto Swing (ImageIcon)
         ImageIcon icon = new ImageIcon(url);
+        //Redimensionamos la imagen
         Image img = icon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-
+//Ajustes visuales del botón, borde centrado etc.
         rb.setIcon(new ImageIcon(img));
         rb.setBorderPainted(true);
         rb.setFocusPainted(false);
         rb.setContentAreaFilled(false);
         rb.setHorizontalAlignment(SwingConstants.CENTER);
     }
-
+/**Pone un borde azul a la selección de usuario para mejor feedback*/
     private void actualizarSeleccion() {
 
         rb1.setBorder(null);
@@ -843,7 +847,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
     }
-
+/**convierte una ruta de texto en una imagen visible en pantalla*/
     private void configurarImagenLabel(javax.swing.JLabel label, String ruta, int ancho, int alto) {
 
     if (ruta == null || ruta.isEmpty()) {
@@ -863,39 +867,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Image img = icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
     label.setIcon(new ImageIcon(img));
 }
-
+/**Encargado de la gestión del tiempo para resolver la pregunta*/
     private void iniciarTemporizador() {
 
         if (!panelPreguntaMultiple.isVisible() && !panelPreguntaTexto.isVisible()) {
             return;
         }
-
+//Establecesmos 30 segundos
         tiempoRestante = 30;
 
         if (temporizador != null && temporizador.isRunning()) {
             temporizador.stop();
         }
-
+//Baja cada 1 segundo la cantidad anterior
         temporizador = new Timer(1000, e -> {
             tiempoRestante--;
-
+//Actualizamos el contador según el tipo de pregunta
             if (panelPreguntaMultiple.isVisible()) {
                 lblTiempoMultiple.setText("Tiempo: " + tiempoRestante + "s");
             } else if (panelPreguntaTexto.isVisible()) {
                 lblTiempoTexto.setText("Tiempo: " + tiempoRestante + "s");
             }
-
+//Si se acaba el tiempo paramos el temporizador y pasamos a la siguiente pregunta
             if (tiempoRestante <= 0) {
                 temporizador.stop();
                 JOptionPane.showMessageDialog(this, "¡Tiempo agotado!", "Tiempo", JOptionPane.WARNING_MESSAGE);
-
                 indicePreguntaActual++;
+             //Si hay mas preguntas pasamos a la siguiente
                 if (indicePreguntaActual < preguntas.size()) {
                     mostrarPregunta();
-                } else {
+                } else {//Si no hay mas preguntas
                     if (temporizador != null && temporizador.isRunning()) {
                         temporizador.stop();
                     }
+//Agregamos al jugador, actualizamos el ranking, limpiamos los campos y mostramos la pantalla final
                     gestorPersistencia.agregarJugador(jugadorActual);
                     añadirResultadoRanking();
                     txtNombre.setText("");
@@ -907,10 +912,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         temporizador.start();
     }
-
+/**Filtra las preguntas y nos quedamos con las del tema elegido*/
     public void iniciarJuegoPorTema(String tema) {
+        //Guardamos el tema seleccionado
         temaActual = tema;
+        //Trabajamos sobre una copia de la lista con las preguntas filtradas
         List<Pregunta> preguntasFiltradas = new ArrayList<>();
+//Recorremos todas las preguntas de la lista original y guardamos las del tema en su lista
         for (Pregunta p : todasLasPreguntas) {
             if (p.getTema().equalsIgnoreCase(tema)) {
                 preguntasFiltradas.add(p);
@@ -921,20 +929,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No hay preguntas disponibles para este tema.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-
+        
         this.preguntas = preguntasFiltradas;
         this.indicePreguntaActual = 0;
 
         mostrarPregunta();
     }
-
+/**Coge la lista de los jugadores y los muestra en la tabla*/
     public void añadirResultadoRanking() {
-
+//Obtenemos el modelo y limpiamos la tabla
         DefaultTableModel modelo = (DefaultTableModel) tblRanking.getModel();
         modelo.setRowCount(0);
-
+//Conseguimos la lista de jugadores
         List<Jugador> ranking = gestorPersistencia.getRanking();
-
+//Ls recorremos de uno en uno y los metemos en la tabla
         for (Jugador j : ranking) {
             modelo.addRow(new Object[]{
                 j.getNombre(),
@@ -954,10 +962,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnRespuestaMultiple;
     private javax.swing.JButton btnRespuestaTexto;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel contenedor;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCiencia;

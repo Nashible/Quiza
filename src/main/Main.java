@@ -4,7 +4,15 @@ import java.util.List;
 import modelo.Pregunta;
 import servicios.LectorJSON;
 import vista.VentanaPrincipal;
-
+/**
+ * Clase Main
+ * 
+ * La clase que inicia el programa carga las preguntas
+ * y lanza la interfaz gráfica
+ * 
+ * @author Antonio Donoso
+ * @version 1.0 
+ */
 public class Main {
 
     public static void main(String[] args) {

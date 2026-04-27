@@ -1,7 +1,10 @@
 package modelo;
-
+/**
+ * Clase Pregunta
+ * Representa la pregunta con sus datos, tipo y contenido
+ */
 public class Pregunta {
-
+/**Se guarda el tipo de pregunta en un enum para evitar errores al escribirlo*/
     public enum Tipo {
         MULTIPLE, TEXTO
     }
@@ -13,7 +16,7 @@ public class Pregunta {
     private String imagen;
     private String tema;
 
-    
+    /**Constructor para las preguntas de tipo múltiple*/
     public Pregunta(String enunciado, String[] opciones, String respuestaCorrecta, String imagen, String tema) {
         this.tipo = Tipo.MULTIPLE;
         this.enunciado = enunciado;
@@ -23,7 +26,7 @@ public class Pregunta {
         this.tema = tema;
     }
 
-    
+    /**Constructor para las preguntas de tipo texto*/
     public Pregunta(String enunciado, String respuestaCorrecta, String imagen, String tema) {
         this.tipo = Tipo.TEXTO;
         this.enunciado = enunciado;
